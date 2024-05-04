@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.QuadCurve?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #F1F1F1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle arcHeight="50.0" arcWidth="500.0" fill="#0e5b51" height="200.0" layoutX="50.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" width="900.0">
+         <effect>
+            <InnerShadow />
+         </effect></Rectangle>
+      <Rectangle fill="#0e5b51" height="350.0" layoutY="350.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1000.0" />
+      <QuadCurve controlX="-50.0" controlY="-80.0" endX="550.0" fill="#0e5b51" layoutX="49.0" layoutY="352.0" startX="-50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <QuadCurve controlX="975.6666870117188" controlY="-53.0" endX="522.3333129882812" endY="-5.0" fill="#0e5b51" layoutY="355.0" startX="1000.0" startY="-5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Rectangle arcHeight="50.0" arcWidth="500.0" fill="#0e5b51" height="80.0" layoutX="50.0" layoutY="20.0" stroke="BLACK" strokeType="INSIDE" width="300.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Label layoutX="131.0" layoutY="22.0" text="Balance" textFill="#c8c33e">
+         <font>
+            <Font name="Viner Hand ITC" size="36.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

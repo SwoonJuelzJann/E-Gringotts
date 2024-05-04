@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="parentContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.loginController">
+   <children>
+       <AnchorPane fx:id="loginPane" layoutX="50.0" layoutY="500.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="660.0" style="-fx-background-color: #0E5B51;" StackPane.alignment="CENTER">
+           <children>
+               <Label alignment="CENTER_RIGHT" layoutX="33.0" layoutY="192.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="USERNAME" textAlignment="CENTER" textFill="#c8c33e">
+                   <font>
+                       <Font name="System Bold" size="12.0" />
+                   </font></Label>
+               <TextField layoutX="122.0" layoutY="188.0" />
+               <PasswordField layoutX="122.0" layoutY="230.0" />
+               <Button layoutX="97.0" layoutY="313.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="register" />
+               <Label layoutX="37.0" layoutY="365.0" text="For goblins, login here" />
+               <Button layoutX="163.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="I'm a goblin!" />
+               <ImageView fitHeight="115.0" fitWidth="121.0" layoutX="91.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="@../../../images/WizardHat.png" />
+                   </image>
+               </ImageView>
+               <Button fx:id="loginButton" layoutX="97.0" layoutY="276.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="103.0" text="login" />
+               <Label layoutX="76.0" layoutY="129.0" text="E-GRINGOTTS" textAlignment="CENTER" textFill="#c8c33e">
+                   <font>
+                       <Font name="Viner Hand ITC" size="24.0" />
+                   </font>
+               </Label>
+               <Label layoutX="32.0" layoutY="232.0" text="PASSWORD" textFill="#c8c33e">
+                   <font>
+                       <Font name="System Bold" size="12.0" />
+                   </font>
+               </Label>
+            <ImageView fitHeight="400.0" fitWidth="354.0" layoutX="307.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/Castle.jpg" />
+               </image>
+            </ImageView>
+           </children>
+       </AnchorPane>
+   </children>
+</StackPane>
