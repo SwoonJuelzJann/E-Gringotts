@@ -44,5 +44,8 @@ public class loginController {
         stage.show();
 
         stackPane.getChildren().add(dashboard);
+
+        System.out.println("congats dah login");
+        System.out.println("congats dah n");
     }
 }
