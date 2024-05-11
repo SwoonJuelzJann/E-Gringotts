@@ -14,9 +14,13 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.effect.InnerShadow?>
 <BorderPane fx:id="borderPane_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.main_pageController">
    <left>
       <AnchorPane prefHeight="700.0" prefWidth="300.0" style="-fx-background-color: #8B8F8B;" BorderPane.alignment="CENTER">
+         <effect>
+            <InnerShadow />
+         </effect>
          <children>
             <VBox alignment="TOP_CENTER" layoutX="35.0" layoutY="180.0" prefHeight="261.0" prefWidth="300.0" spacing="20.0" AnchorPane.leftAnchor="0.0">
                <children>
