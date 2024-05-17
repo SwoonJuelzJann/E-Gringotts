@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -60,6 +62,14 @@
             <Font name="Viner Hand ITC" size="36.0" />
          </font>
       </Label>
-      <ScrollPane hbarPolicy="NEVER" layoutX="50.0" layoutY="401.0" prefHeight="268.0" prefWidth="478.0" style="-fx-background-color: #BFC3C6;" />
+      <ScrollPane hbarPolicy="NEVER" layoutX="50.0" layoutY="401.0" prefHeight="250.0" prefWidth="500.0" style="-fx-background-color: #BFC3C6;">
+         <content>
+            <TableView prefHeight="250.0" prefWidth="500.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+         </content></ScrollPane>
    </children>
 </AnchorPane>
