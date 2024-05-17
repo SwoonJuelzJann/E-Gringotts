@@ -71,5 +71,35 @@
               </columns>
             </TableView>
          </content></ScrollPane>
+      <Label layoutX="155.0" layoutY="115.0" text="Knut(K)">
+         <font>
+            <Font name="Viner Hand ITC" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="429.0" layoutY="115.0" text="Sickle(S)">
+         <font>
+            <Font name="Viner Hand ITC" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="696.0" layoutY="115.0" text="Galleon(G)">
+         <font>
+            <Font name="Viner Hand ITC" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="balance_K" alignment="CENTER" layoutX="131.0" layoutY="176.0" prefHeight="72.0" prefWidth="187.0" text="0.00" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Viner Hand ITC" size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="balance_S" alignment="CENTER" layoutX="407.0" layoutY="176.0" prefHeight="72.0" prefWidth="187.0" text="0.00" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Viner Hand ITC" size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="balance_G" alignment="CENTER" layoutX="682.0" layoutY="176.0" prefHeight="72.0" prefWidth="187.0" text="0.00" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Viner Hand ITC" size="36.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

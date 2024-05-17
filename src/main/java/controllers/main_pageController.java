@@ -10,6 +10,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -19,27 +22,30 @@ import javafx.event.ActionEvent;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.Objects;
+
+import static com.example.egringotts.main.activeUsername;
+import static com.example.egringotts.main.mongo;
 
 public class main_pageController {
     @FXML
-    private Button dashboardButton,transferButton,exchangeButton,profileButton,logoutButton;
-    @FXML
-    private BorderPane borderPane_main;
+    private Button logoutButton;
     @FXML
     private StackPane stackPane_main;
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-    private AnchorPane anchorPane;
+    @FXML
+    private Label nameLabel;
+    @FXML
+    private ImageView avatarImage;
 
     public void initialize() throws IOException {
+        nameLabel.setText((String) mongo.findFirstName(activeUsername));
+        avatarImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream((String) mongo.findAvatar(activeUsername))))); //reminder image path kena ada '/' kat depan
     }
 
     public void logout(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/egringotts/login.fxml"));
-        stage = (Stage) logoutButton.getScene().getWindow();
-        scene = new Scene(root);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/egringotts/login.fxml")));
+        Stage stage = (Stage) logoutButton.getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
@@ -65,11 +71,11 @@ public class main_pageController {
 
     }
 
-    public boolean openPage(String pageFile) throws IOException {
-        anchorPane = FXMLLoader.load(getClass().getResource(pageFile));
+    public void openPage(String pageFile) throws IOException {
+        AnchorPane anchorPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(pageFile)));
         AnchorPane paneToRemove = (AnchorPane) stackPane_main.getChildren().get(0);
         if (isSamePage(anchorPane, paneToRemove)){
-            return false;
+            return;
         }
 
         anchorPane.translateYProperty().set(stackPane_main.getHeight());
@@ -83,7 +89,6 @@ public class main_pageController {
             stackPane_main.getChildren().remove(paneToRemove);
         });
         timeline.play();
-        return true;
     }
 
     public static boolean isSamePage(AnchorPane pane1, AnchorPane page2) {

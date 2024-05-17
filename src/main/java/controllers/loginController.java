@@ -11,6 +11,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -19,6 +21,8 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
+import static com.example.egringotts.main.mongo;
+
 public class loginController {
     @FXML
     private Button loginButton,backShot;
@@ -26,6 +30,10 @@ public class loginController {
     private AnchorPane loginPane,loginPic, mainPane;
     @FXML
     private StackPane parentContainer;
+    @FXML
+    private TextField usernameTextfield;
+    @FXML
+    private PasswordField passwordTextfield;
 
     private Stage stage;
     private Scene scene;

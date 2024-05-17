@@ -11,13 +11,27 @@ import org.bson.Document;
 import static com.example.egringotts.MongoDBConnection.accountsCollection;
 
 public class main extends Application {
+
+    public static String activeUsername = "Tester321";  //testing
+    public static MongoDBConnection mongo;
+
     @Override
     public void start(Stage stage) throws Exception {
         try{
-            MongoDBConnection mongo = new MongoDBConnection();
-            MongoDBConnection.connection();
-            Document found = mongo.findByUsername(accountsCollection,"Tester321");
-            System.out.println(found.get("username"));
+            mongo = new MongoDBConnection();
+            mongo.connection();
+//            Document found = mongo.findByUsername(accountsCollection,"Tester321");
+//            System.out.println(found.get("username"));
+//            System.out.println(mongo.findFirstName("Tester321"));
+//            System.out.println(mongo.findLastName("Tester321"));
+//            System.out.println(mongo.findPhoneNo("Tester321"));
+//            System.out.println(mongo.findUserAddress("Tester321"));
+//            System.out.println(mongo.findPostcode("Tester321"));
+//            System.out.println(mongo.findUserType("Tester321"));
+//            System.out.printf("%.2f",mongo.findBalance_K("DsPalat123"));
+//
+//            System.out.println(mongo.findAmount("Tester321"));
+
 
             Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
             stage.setScene(new Scene(root));

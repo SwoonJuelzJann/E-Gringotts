@@ -18,8 +18,8 @@
                    <font>
                        <Font name="System Bold" size="12.0" />
                    </font></Label>
-               <TextField layoutX="122.0" layoutY="188.0" />
-               <PasswordField layoutX="122.0" layoutY="230.0" />
+               <TextField fx:id="usernameTextfield" layoutX="122.0" layoutY="188.0" />
+               <PasswordField fx:id="passwordTextfield" layoutX="122.0" layoutY="230.0" />
                <Button layoutX="97.0" layoutY="313.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="register" />
                <Label layoutX="37.0" layoutY="365.0" text="For goblins, login here" />
                <Button layoutX="163.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="I'm a goblin!" />
