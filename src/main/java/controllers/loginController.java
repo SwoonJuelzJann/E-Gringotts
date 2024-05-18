@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -25,7 +26,7 @@ import static com.example.egringotts.main.mongo;
 
 public class loginController {
     @FXML
-    private Button loginButton,backShot;
+    private Button loginButton,goblinLoginButton;
     @FXML
     private AnchorPane loginPane,loginPic, mainPane;
     @FXML
@@ -52,5 +53,14 @@ public class loginController {
         stage.show();
 
         stackPane.getChildren().add(dashboard);
+    }
+
+    public void goblinLogin(ActionEvent event) throws IOException {
+        AnchorPane goblinPage = FXMLLoader.load(getClass().getResource("/com/example/egringotts/goblinPage.fxml"));
+        Scene scene = new Scene(goblinPage);
+        Stage stage = (Stage) goblinLoginButton.getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
     }
 }

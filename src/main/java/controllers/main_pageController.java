@@ -38,7 +38,7 @@ public class main_pageController {
     private ImageView avatarImage;
 
     public void initialize() throws IOException {
-        nameLabel.setText((String) mongo.findFirstName(activeUsername));
+        nameLabel.setText(mongo.findFirstName(activeUsername));
         avatarImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream((String) mongo.findAvatar(activeUsername))))); //reminder image path kena ada '/' kat depan
     }
 

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #8B8F8B;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.goblinPageController">
+   <children>
+      <TabPane layoutY="100.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #8B8F8B;" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Accounts Info">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+          <Tab text="Transactions Info">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+            <Tab text="Add a New Account">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #0E5B51;">
+                     <children>
+                        <Circle fill="WHITE" layoutX="90.0" layoutY="179.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+                        <ImageView fx:id="avatarImage1" fitHeight="80.0" fitWidth="80.0" layoutX="50.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/avatars/Death.png" />
+                           </image>
+                        </ImageView>
+                        <Circle fill="WHITE" layoutX="242.0" layoutY="180.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+                        <ImageView fx:id="avatarImage11" fitHeight="80.0" fitWidth="80.0" layoutX="202.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/avatars/Fire.png" />
+                           </image>
+                        </ImageView>
+                        <Circle fill="WHITE" layoutX="90.0" layoutY="294.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+                        <ImageView fx:id="avatarImage111" fitHeight="80.0" fitWidth="80.0" layoutX="50.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/avatars/Hydro.png" />
+                           </image>
+                        </ImageView>
+                        <Circle fill="WHITE" layoutX="242.0" layoutY="295.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+                        <ImageView fx:id="avatarImage1111" fitHeight="80.0" fitWidth="80.0" layoutX="202.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/avatars/Life.png" />
+                           </image>
+                        </ImageView>
+                        <Circle fill="WHITE" layoutX="90.0" layoutY="407.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+                        <ImageView fx:id="avatarImage11111" fitHeight="80.0" fitWidth="80.0" layoutX="50.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/avatars/Plant.png" />
+                           </image>
+                        </ImageView>
+                        <Circle fill="WHITE" layoutX="242.0" layoutY="408.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+                        <ImageView fx:id="avatarImage111111" fitHeight="80.0" fitWidth="80.0" layoutX="202.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/avatars/Smoke.png" />
+                           </image>
+                        </ImageView>
+                        <Circle fill="WHITE" layoutX="166.0" layoutY="507.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+                        <ImageView fx:id="avatarImage1111111" fitHeight="80.0" fitWidth="80.0" layoutX="126.0" layoutY="467.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/avatars/Air.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="nameLabel1" layoutX="13.0" layoutY="30.0" prefHeight="66.0" prefWidth="229.0" text="NEW ACCOUNT AVATAR :" textAlignment="CENTER" textFill="#c8c33e" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Circle fill="WHITE" layoutX="292.0" layoutY="63.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+                        <ImageView fx:id="avatarImage111112" fitHeight="80.0" fitWidth="80.0" layoutX="252.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/avatars/Air.png" />
+                           </image>
+                        </ImageView>
+                        <Separator layoutX="377.0" layoutY="13.0" orientation="VERTICAL" prefHeight="543.0" prefWidth="9.0" />
+                        <Label alignment="CENTER_RIGHT" layoutX="432.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="USERNAME" textAlignment="CENTER" textFill="#c8c33e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="usernameTextfield" layoutX="562.0" layoutY="23.0" prefHeight="25.0" prefWidth="286.0" />
+                        <PasswordField fx:id="passwordTextfield" layoutX="562.0" layoutY="63.0" prefHeight="25.0" prefWidth="287.0" />
+                        <Label layoutX="432.0" layoutY="67.0" text="PASSWORD" textFill="#c8c33e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="432.0" layoutY="107.0" text="VERIFY PASSWORD" textFill="#c8c33e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="562.0" layoutY="143.0" prefHeight="25.0" prefWidth="289.0" />
+                        <TextField layoutX="562.0" layoutY="223.0" />
+                        <TextField layoutX="562.0" layoutY="183.0" prefHeight="25.0" prefWidth="288.0" />
+                        <PasswordField fx:id="passwordTextfield1" layoutX="562.0" layoutY="103.0" prefHeight="25.0" prefWidth="288.0" />
+                        <TextField layoutX="562.0" layoutY="263.0" />
+                        <TextField layoutX="562.0" layoutY="343.0" />
+                        <TextField layoutX="562.0" layoutY="303.0" prefHeight="25.0" prefWidth="292.0" />
+                        <Label layoutX="432.0" layoutY="187.0" text="LAST NAME" textFill="#c8c33e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="432.0" layoutY="227.0" text="PHONE NUMBER" textFill="#c8c33e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="432.0" layoutY="307.0" text="ADDRESS" textFill="#c8c33e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="432.0" layoutY="267.0" text="E-MAIL" textFill="#c8c33e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="432.0" layoutY="147.0" text="FIRST NAME" textFill="#c8c33e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="432.0" layoutY="387.0" text="DEPOSIT KNUTT" textFill="#c8c33e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="432.0" layoutY="347.0" text="POSTCODE" textFill="#c8c33e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="562.0" layoutY="383.0" />
+                        <TextField layoutX="562.0" layoutY="463.0" />
+                        <TextField layoutX="562.0" layoutY="423.0" />
+                        <Label layoutX="432.0" layoutY="427.0" text="DEPOSIT SICKLE" textFill="#c8c33e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="432.0" layoutY="467.0" text="DEPOSIT GALLEON" textFill="#c8c33e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="432.0" layoutY="502.0" text="GOBLIN STATUS" textFill="#c8c33e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <CheckBox layoutX="562.0" layoutY="502.0" mnemonicParsing="false" text="GOBLIN" textFill="#c8c33e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </CheckBox>
+                        <Label layoutX="719.0" layoutY="387.0" text="(K)" textFill="#c8c33e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="719.0" layoutY="427.0" text="(S)" textFill="#c8c33e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="719.0" layoutY="467.0" text="(G)" textFill="#c8c33e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="571.0" layoutY="532.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="173.0" text="Create new account" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Circle fill="WHITE" layoutX="58.0" layoutY="50.0" radius="50.0" scaleX="0.8" scaleY="0.8" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <ImageView fx:id="avatarImage" fitHeight="80.0" fitWidth="80.0" layoutX="18.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
+         <image>
+            <Image url="@../../../images/avatars/Air.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="131.0" layoutY="6.0" scaleX="0.8" scaleY="0.8" text="Greetings!">
+         <font>
+            <Font name="Viner Hand ITC" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="nameLabel" layoutX="91.0" layoutY="26.0" prefHeight="66.0" prefWidth="346.0" scaleX="0.8" scaleY="0.8" text="FIRST NAME" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="System Bold" size="45.0" />
+         </font>
+      </Label>
+      <Button fx:id="logoutButton" layoutX="733.0" layoutY="26.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="135.0" text="Logout" textFill="#0e5b51">
+         <font>
+            <Font name="Viner Hand ITC" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

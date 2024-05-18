@@ -20,9 +20,8 @@
                    </font></Label>
                <TextField fx:id="usernameTextfield" layoutX="122.0" layoutY="188.0" />
                <PasswordField fx:id="passwordTextfield" layoutX="122.0" layoutY="230.0" />
-               <Button layoutX="97.0" layoutY="313.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="register" />
                <Label layoutX="37.0" layoutY="365.0" text="For goblins, login here" />
-               <Button layoutX="163.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="I'm a goblin!" />
+               <Button fx:id="goblinLoginButton" layoutX="163.0" layoutY="361.0" mnemonicParsing="false" onAction="#goblinLogin" prefHeight="25.0" prefWidth="103.0" text="I'm a goblin!" />
                <ImageView fitHeight="115.0" fitWidth="121.0" layoutX="91.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                    <image>
                        <Image url="@../../../images/WizardHat.png" />

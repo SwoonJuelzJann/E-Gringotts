@@ -12,13 +12,12 @@ import java.io.Closeable;
 public class MongoDBConnection implements AutoCloseable, Closeable {
     private static final String connectionString = "mongodb+srv://ProjekDS:ProjekDSsem2@projekds.ic5ixyj.mongodb.net/?retryWrites=true&w=majority&appName=ProjekDS";
     private static MongoClient client;
-    private static MongoDatabase database;
     public static MongoCollection accountsCollection,transactionsCollection;
 
     public static void connection(){
         MongoClientSettings settings = MongoClientSettings.builder().applyToSslSettings(builder -> builder.enabled(false)).build();
         client = MongoClients.create(connectionString);
-        database = client.getDatabase("E-Gringotts");
+        MongoDatabase database = client.getDatabase("E-Gringotts");
         accountsCollection = database.getCollection("Accounts");
         transactionsCollection = database.getCollection("Transactions");
     }
@@ -36,105 +35,105 @@ public class MongoDBConnection implements AutoCloseable, Closeable {
     //~~~~~ALL METHODS TO RETRIEVE OBJECTS FROM MONGO DATABASE~~~~~
     //~ACCOUNTS COLLECTION
 
-    public Object findUsername(String username){
+    public String findUsername(String username){
         Document foundDoc = findByUsername(accountsCollection, username);
-        return foundDoc.get("username");
+        return (String) foundDoc.get("username");
     }
 
-    public Object findFirstName(String username){
+    public String findFirstName(String username){
         Document foundDoc = findByUsername(accountsCollection, username);
-        return foundDoc.get("firstName");
+        return (String) foundDoc.get("firstName");
     }
 
-    public Object findLastName(String username){
+    public String findLastName(String username){
         Document foundDoc = findByUsername(accountsCollection, username);
-        return foundDoc.get("lastName");
+        return (String) foundDoc.get("lastName");
     }
 
-    public Object findPhoneNo(String username){
+    public String findPhoneNo(String username){
         Document foundDoc = findByUsername(accountsCollection, username);
-        return foundDoc.get("phoneNo");
+        return (String) foundDoc.get("phoneNo");
     }
 
-    public Object findUserAddress(String username){
+    public String findUserAddress(String username){
         Document foundDoc = findByUsername(accountsCollection, username);
-        return foundDoc.get("userAddress");
+        return (String) foundDoc.get("userAddress");
     }
 
-    public Object findPostcode(String username){
+    public Integer findPostcode(String username){
         Document foundDoc = findByUsername(accountsCollection, username);
-        return foundDoc.get("postcode");
+        return (Integer) foundDoc.get("postcode");
     }
 
-    public Object findUserType(String username){
+    public String findUserType(String username){
         Document foundDoc = findByUsername(accountsCollection, username);
-        return foundDoc.get("userType");
+        return (String) foundDoc.get("userType");
     }
 
-    public Object findBalance_K(String username){
+    public Double findBalance_K(String username){
         Document foundDoc = findByUsername(accountsCollection, username);
-        return foundDoc.get("balance_K");
+        return (Double) foundDoc.get("balance_K");
     }
 
-    public Object findBalance_S(String username){
+    public Double findBalance_S(String username){
         Document foundDoc = findByUsername(accountsCollection, username);
-        return foundDoc.get("balance_S");
+        return (Double) foundDoc.get("balance_S");
     }
 
-    public Object findBalance_G(String username){
+    public Double findBalance_G(String username){
         Document foundDoc = findByUsername(accountsCollection, username);
-        return foundDoc.get("balance_G");
+        return (Double) foundDoc.get("balance_G");
     }
 
-    public Object findGoblinStatus(String username){
+    public Integer findGoblinStatus(String username){
         Document foundDoc = findByUsername(accountsCollection, username);
-        return foundDoc.get("goblinStatus");
+        return (Integer) foundDoc.get("goblinStatus");
     }
 
-    public Object findAvatar(String username){
+    public String findAvatar(String username){
         Document foundDoc = findByUsername(accountsCollection, username);
-        return foundDoc.get("avatar");
+        return (String) foundDoc.get("avatar");
     }
 
     //~TRANSACTIONS COLLECTION
 
-    public Object findTransactionID(String username){
+    public String findTransactionID(String username){
         Document foundDoc = findByUsername(transactionsCollection, username);
-        return foundDoc.get("_id");
+        return (String) foundDoc.get("_id");
     }
 
-    public Object findSenderUsername(String username){
+    public String findSenderUsername(String username){
         Document foundDoc = findByUsername(transactionsCollection, username);
-        return foundDoc.get("username");
+        return (String) foundDoc.get("username");
     }
 
-    public Object findReceiverUsername(String username){
+    public String findReceiverUsername(String username){
         Document foundDoc = findByUsername(transactionsCollection, username);
-        return foundDoc.get("receiverUsername");
+        return (String) foundDoc.get("receiverUsername");
     }
 
-    public Object findAmount(String username){
+    public Double findAmount(String username){
         Document foundDoc = findByUsername(transactionsCollection, username);
-        return foundDoc.get("amount");
+        return (Double) foundDoc.get("amount");
     }
 
-    public Object findCurrency(String username){
+    public String findCurrency(String username){
         Document foundDoc = findByUsername(transactionsCollection, username);
-        return foundDoc.get("currency");
+        return (String) foundDoc.get("currency");
     }
 
-    public Object findBalanceAfter(String username){
+    public Double findBalanceAfter(String username){
         Document foundDoc = findByUsername(transactionsCollection, username);
-        return foundDoc.get("balanceAfter");
+        return (Double) foundDoc.get("balanceAfter");
     }
+        //---TODO implement date later on
+//    public Object findDateTransaction(String username){
+//        Document foundDoc = findByUsername(transactionsCollection, username);
+//        return foundDoc.get("date");
+//    }
 
-    public Object findDateTransaction(String username){
+    public String findCategory(String username){
         Document foundDoc = findByUsername(transactionsCollection, username);
-        return foundDoc.get("date");
-    }
-
-    public Object findCategory(String username){
-        Document foundDoc = findByUsername(transactionsCollection, username);
-        return foundDoc.get("category");
+        return (String) foundDoc.get("category");
     }
 }
