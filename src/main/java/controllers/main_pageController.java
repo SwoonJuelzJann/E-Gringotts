@@ -39,7 +39,8 @@ public class main_pageController {
 
     public void initialize() throws IOException {
         nameLabel.setText(mongo.findFirstName(activeUsername));
-        avatarImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream((String) mongo.findAvatar(activeUsername))))); //reminder image path kena ada '/' kat depan
+        avatarImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(mongo.findAvatar(activeUsername))))); //reminder image path kena ada '/' kat depan
+//        avatarImage.setImage(new Image("/Air.png"));
     }
 
     public void logout(ActionEvent event) throws IOException {

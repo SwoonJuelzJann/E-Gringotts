@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import static com.example.egringotts.main.mongo;
 
@@ -42,8 +43,8 @@ public class loginController {
     private AnchorPane child;
 
     public void login(ActionEvent event) throws IOException {
-        BorderPane mainPage = FXMLLoader.load(getClass().getResource("/com/example/egringotts/main_page.fxml"));
-        AnchorPane dashboard = FXMLLoader.load(getClass().getResource("/com/example/egringotts/dashboard.fxml"));
+        BorderPane mainPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/egringotts/main_page.fxml")));
+        AnchorPane dashboard = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/egringotts/dashboard.fxml")));
         StackPane stackPane = (StackPane) mainPage.getRight();
 
         Scene scene = new Scene(mainPage);
