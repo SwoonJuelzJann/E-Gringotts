@@ -8,7 +8,7 @@ public class transaction {
     private Double amount;
     private String currency;
     private String category;
-    private Date date;
+    private final Date date;
 
     public transaction(String username, String receiverUsername, Double amount, String currency, String category) {
         this.username = username;

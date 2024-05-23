@@ -14,7 +14,7 @@ import static com.example.egringotts.MongoDBConnection.accountsCollection;
 
 public class main extends Application {
 
-    public static String activeUsername = "aku";  //testing
+    public static String activeUsername = "DsPalat123";  //testing
     public static MongoDBConnection mongo;
 
     @Override

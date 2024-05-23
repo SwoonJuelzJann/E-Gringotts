@@ -51,6 +51,16 @@ public class MongoDBConnection implements AutoCloseable, Closeable {
         accountsCollection.insertOne(doc);
     }
 
+    public void addTransactionDocument(transaction transaction){
+        Document doc = new Document("username",transaction.getUsername());
+        doc.append("receiverUsername",transaction.getReceiverUsername());
+        doc.append("amount",transaction.getAmount());
+        doc.append("currency",transaction.getCurrency());
+        doc.append("date",transaction.getDate());
+        doc.append("category",transaction.getCategory());
+        transactionsCollection.insertOne(doc);
+    }
+
     //~~~~~ALL METHODS TO RETRIEVE OBJECTS FROM MONGO DATABASE~~~~~
     //~ACCOUNTS COLLECTION
 
@@ -92,6 +102,11 @@ public class MongoDBConnection implements AutoCloseable, Closeable {
     public String findUserType(String username){
         Document foundDoc = findByUsername(accountsCollection, username);
         return (String) foundDoc.get("userType");
+    }
+
+    public double findBalance(String currency, String username){
+        Document foundDoc = findByUsername(accountsCollection, username);
+        return (Double) foundDoc.get(currency);
     }
 
     public Double findBalance_K(String username){

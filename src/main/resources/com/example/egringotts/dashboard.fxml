@@ -57,7 +57,7 @@
             <Font name="Viner Hand ITC" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="719.0" layoutY="326.0" text="Card info" textFill="#c8c33e">
+      <Label layoutX="719.0" layoutY="326.0" text="User Type" textFill="#c8c33e">
          <font>
             <Font name="Viner Hand ITC" size="36.0" />
          </font>

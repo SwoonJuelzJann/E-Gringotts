@@ -135,7 +135,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="432.0" layoutY="387.0" text="DEPOSIT KNUTT" textFill="#c8c33e">
+                        <Label layoutX="432.0" layoutY="387.0" text="DEPOSIT KNUT" textFill="#c8c33e">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
