@@ -4,11 +4,13 @@ import com.example.egringotts.MongoDBConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -17,6 +19,7 @@ import javafx.stage.Stage;
 
 
 import java.io.IOException;
+import java.util.Objects;
 
 import static com.example.egringotts.main.activeUsername;
 import static com.example.egringotts.main.mongo;
@@ -24,6 +27,10 @@ import static com.example.egringotts.main.mongo;
 public class loginController{
     @FXML
     private Button loginButton,goblinLoginButton;
+    @FXML
+    private AnchorPane loginPane,loginPic, mainPane;
+    @FXML
+    private StackPane parentContainer;
     @FXML
     private TextField usernameTextfield;
     @FXML
