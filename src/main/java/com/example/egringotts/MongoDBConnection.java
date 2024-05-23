@@ -14,6 +14,10 @@ public class MongoDBConnection implements AutoCloseable, Closeable {
     private static MongoClient client;
     public static MongoCollection accountsCollection,transactionsCollection;
 
+    public MongoDBConnection() {
+        connection();
+    }
+
     public static void connection(){
         MongoClientSettings settings = MongoClientSettings.builder().applyToSslSettings(builder -> builder.enabled(false)).build();
         client = MongoClients.create(connectionString);
@@ -32,12 +36,18 @@ public class MongoDBConnection implements AutoCloseable, Closeable {
         return (Document) collectionName.find(new Document("username",username)).first();
     }
 
+
     //~~~~~ALL METHODS TO RETRIEVE OBJECTS FROM MONGO DATABASE~~~~~
     //~ACCOUNTS COLLECTION
 
     public String findUsername(String username){
         Document foundDoc = findByUsername(accountsCollection, username);
         return (String) foundDoc.get("username");
+    }
+
+    public String findPassword(String username){
+        Document foundDoc = findByUsername(accountsCollection, username);
+        return (String) foundDoc.get("password");
     }
 
     public String findFirstName(String username){

@@ -43,6 +43,11 @@
                   <Image url="@../../../images/Castle.jpg" />
                </image>
             </ImageView>
+            <Label fx:id="warningLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="43.0" layoutY="309.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="211.0" text="Please enter both username and password." textAlignment="CENTER" textFill="RED" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
            </children>
        </AnchorPane>
    </children>
