@@ -64,10 +64,13 @@
       </Label>
       <ScrollPane hbarPolicy="NEVER" layoutX="50.0" layoutY="401.0" prefHeight="250.0" prefWidth="500.0" style="-fx-background-color: #BFC3C6;">
          <content>
-            <TableView prefHeight="250.0" prefWidth="500.0">
+            <TableView fx:id="transferHistoryTable" prefHeight="250.0" prefWidth="500.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn fx:id="receiverColumn" editable="false" prefWidth="103.0" sortable="false" text="RECEIVER" />
+                <TableColumn fx:id="amountColumn" prefWidth="70.5" text="AMOUNT" />
+                  <TableColumn fx:id="currencyColumn" prefWidth="76.0" text="CURRENCY" />
+                  <TableColumn fx:id="categoryColumn" prefWidth="103.0" text="CATEGORY" />
+                  <TableColumn fx:id="dateColumn" prefWidth="146.5" text="DATE" />
               </columns>
             </TableView>
          </content></ScrollPane>

@@ -1,5 +1,7 @@
 package com.example.egringotts;
 
+import javafx.scene.chart.PieChart;
+
 import java.util.Date;
 
 public class transaction {
@@ -10,6 +12,14 @@ public class transaction {
     private String category;
     private final Date date;
 
+    public transaction(String username, String receiverUsername, Double amount, String currency, String category, Date date) {
+        this.username = username;
+        this.receiverUsername = receiverUsername;
+        this.amount = amount;
+        this.currency = currency;
+        this.category = category;
+        this.date = date;
+    }
     public transaction(String username, String receiverUsername, Double amount, String currency, String category) {
         this.username = username;
         this.receiverUsername = receiverUsername;
