@@ -7,12 +7,12 @@ public class userType {
     private double maxTransferG;
     private double exchangeFee;
 
-    public userType(double maxTransferK, double maxTransferS, double maxTransferG, double exchangeFee, int levelUpQuota) {
+    public userType(double maxTransferK, double maxTransferS, double maxTransferG, double exchangeFee, int tierUpQuota) {
         this.maxTransferK = maxTransferK;
         this.maxTransferS = maxTransferS;
         this.maxTransferG = maxTransferG;
         this.exchangeFee = exchangeFee;
-        this.levelUpQuota = levelUpQuota;
+        this.levelUpQuota = tierUpQuota;
     }
 
     public double getMaxTransferK() {

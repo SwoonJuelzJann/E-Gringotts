@@ -62,9 +62,9 @@
             <Font name="Viner Hand ITC" size="36.0" />
          </font>
       </Label>
-      <ScrollPane hbarPolicy="NEVER" layoutX="50.0" layoutY="401.0" prefHeight="250.0" prefWidth="500.0" style="-fx-background-color: #BFC3C6;">
+      <ScrollPane hbarPolicy="NEVER" layoutX="50.0" layoutY="401.0" prefHeight="274.0" prefWidth="500.0" style="-fx-background-color: #BFC3C6;">
          <content>
-            <TableView fx:id="transferHistoryTable" prefHeight="250.0" prefWidth="500.0">
+            <TableView fx:id="transferHistoryTable" prefHeight="274.0" prefWidth="500.0">
               <columns>
                 <TableColumn fx:id="receiverColumn" editable="false" prefWidth="103.0" sortable="false" text="RECEIVER" />
                 <TableColumn fx:id="amountColumn" prefWidth="70.5" text="AMOUNT" />
@@ -102,6 +102,66 @@
       <Label fx:id="balance_G" alignment="CENTER" layoutX="682.0" layoutY="176.0" prefHeight="72.0" prefWidth="187.0" text="0.00" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Viner Hand ITC" size="36.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="userTypeBlock" arcHeight="50.0" arcWidth="500.0" fill="#b58406" height="274.0" layoutX="622.0" layoutY="401.0" stroke="BLACK" strokeType="INSIDE" width="350.0">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Rectangle>
+      <Label fx:id="userTypeLabel" alignment="CENTER" layoutX="641.0" layoutY="422.0" prefHeight="35.0" prefWidth="312.0" text="BRONZE BARGAINER">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="640.0" layoutY="457.0" prefHeight="24.0" prefWidth="312.0" text="You can only transfer at most : ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="maxTransferK" alignment="CENTER" layoutX="640.0" layoutY="484.0" prefHeight="27.0" prefWidth="157.0" text="100">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="maxTransferS" alignment="CENTER" layoutX="640.0" layoutY="511.0" prefHeight="27.0" prefWidth="157.0" text="200">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="maxTransferG" alignment="CENTER" layoutX="640.0" layoutY="538.0" prefHeight="27.0" prefWidth="157.0" text="300">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="640.0" layoutY="577.0" prefHeight="27.0" prefWidth="215.0" text="Gringotts exchange fee :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="797.0" layoutY="484.0" prefHeight="27.0" prefWidth="157.0" text="Knut(K)">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="797.0" layoutY="511.0" prefHeight="27.0" prefWidth="157.0" text="Sickle(S)">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="797.0" layoutY="538.0" prefHeight="27.0" prefWidth="157.0" text="Galleon(G)">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="exchangeFee" alignment="CENTER" layoutX="868.0" layoutY="577.0" prefHeight="27.0" prefWidth="81.0" text="6% ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="remainingTransactions" alignment="CENTER" contentDisplay="CENTER" layoutX="640.0" layoutY="604.0" prefHeight="54.0" prefWidth="312.0" text="Perform 5 more transactions to tier up. " textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="System Bold" size="17.0" />
          </font>
       </Label>
    </children>

@@ -108,4 +108,8 @@ public class main_pageController {
         }
         return true;
     }
+
+    public Image getAvatarImage() {
+        return avatarImage.getImage();
+    }
 }

@@ -14,9 +14,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #999999;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.profileController">
+<AnchorPane fx:id="pane" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #999999;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.profileController">
    <children>
-      <Rectangle arcHeight="50.0" arcWidth="500.0" fill="#0e5b51" height="614.0" layoutX="522.0" layoutY="74.0" stroke="BLACK" strokeType="INSIDE" width="467.0">
+      <Rectangle arcHeight="50.0" arcWidth="500.0" fill="#0e5b51" height="623.0" layoutX="522.0" layoutY="74.0" stroke="BLACK" strokeType="INSIDE" width="467.0">
          <effect>
             <InnerShadow />
          </effect>
@@ -62,7 +62,7 @@
             <DropShadow />
          </effect>
       </Rectangle>
-      <Rectangle arcHeight="50.0" arcWidth="500.0" fill="#0e5b51" height="614.0" layoutX="15.0" layoutY="79.0" stroke="BLACK" strokeType="INSIDE" width="467.0">
+      <Rectangle arcHeight="50.0" arcWidth="500.0" fill="#0e5b51" height="617.0" layoutX="15.0" layoutY="79.0" stroke="BLACK" strokeType="INSIDE" width="467.0">
          <effect>
             <InnerShadow />
          </effect>
@@ -77,55 +77,55 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button layoutX="676.0" layoutY="386.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="173.0" text="Update profile" />
-      <Circle fill="WHITE" layoutX="846.0" layoutY="578.0" radius="50.0" scaleX="0.8" scaleY="0.8" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
-      <ImageView fx:id="avatarImage1" fitHeight="80.0" fitWidth="80.0" layoutX="806.0" layoutY="538.0" pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
+      <Button fx:id="updateProfileButton" layoutX="676.0" layoutY="386.0" mnemonicParsing="false" onAction="#updateProfile" prefHeight="25.0" prefWidth="173.0" text="Update profile" />
+      <Circle fill="WHITE" layoutX="846.0" layoutY="606.0" radius="50.0" scaleX="0.7" scaleY="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <ImageView fx:id="avatarImage1" fitHeight="80.0" fitWidth="80.0" layoutX="806.0" layoutY="566.0" onMouseClicked="#chooseAvatarDeath" pickOnBounds="true" preserveRatio="true" scaleX="0.7" scaleY="0.7">
          <image>
             <Image url="@../../../images/avatars/Death.png" />
          </image>
       </ImageView>
-      <Circle fill="WHITE" layoutX="889.0" layoutY="498.0" radius="50.0" scaleX="0.8" scaleY="0.8" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
-      <ImageView fx:id="avatarImage11" fitHeight="80.0" fitWidth="80.0" layoutX="849.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
+      <Circle fill="WHITE" layoutX="889.0" layoutY="536.0" radius="50.0" scaleX="0.7" scaleY="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <ImageView fx:id="avatarImage11" fitHeight="80.0" fitWidth="80.0" layoutX="849.0" layoutY="496.0" onMouseClicked="#chooseAvatarFire" pickOnBounds="true" preserveRatio="true" scaleX="0.7" scaleY="0.7">
          <image>
             <Image url="@../../../images/avatars/Fire.png" />
          </image>
       </ImageView>
-      <Circle fill="WHITE" layoutX="757.0" layoutY="578.0" radius="50.0" scaleX="0.8" scaleY="0.8" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
-      <ImageView fx:id="avatarImage111" fitHeight="80.0" fitWidth="80.0" layoutX="717.0" layoutY="538.0" pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
+      <Circle fill="WHITE" layoutX="757.0" layoutY="606.0" radius="50.0" scaleX="0.7" scaleY="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <ImageView fx:id="avatarImage111" fitHeight="80.0" fitWidth="80.0" layoutX="717.0" layoutY="566.0" onMouseClicked="#chooseAvatarHydro" pickOnBounds="true" preserveRatio="true" scaleX="0.7" scaleY="0.7">
          <image>
             <Image url="@../../../images/avatars/Hydro.png" />
          </image>
       </ImageView>
-      <Circle fill="WHITE" layoutX="663.0" layoutY="578.0" radius="50.0" scaleX="0.8" scaleY="0.8" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
-      <ImageView fx:id="avatarImage1111" fitHeight="80.0" fitWidth="80.0" layoutX="623.0" layoutY="538.0" pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
+      <Circle fill="WHITE" layoutX="663.0" layoutY="606.0" radius="50.0" scaleX="0.7" scaleY="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <ImageView fx:id="avatarImage1111" fitHeight="80.0" fitWidth="80.0" layoutX="623.0" layoutY="566.0" onMouseClicked="#chooseAvatarLife" pickOnBounds="true" preserveRatio="true" scaleX="0.7" scaleY="0.7">
          <image>
             <Image url="@../../../images/avatars/Life.png" />
          </image>
       </ImageView>
-      <Circle fill="WHITE" layoutX="794.0" layoutY="498.0" radius="50.0" scaleX="0.8" scaleY="0.8" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
-      <ImageView fx:id="avatarImage11111" fitHeight="80.0" fitWidth="80.0" layoutX="754.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
+      <Circle fill="WHITE" layoutX="794.0" layoutY="536.0" radius="50.0" scaleX="0.7" scaleY="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <ImageView fx:id="avatarImage11111" fitHeight="80.0" fitWidth="80.0" layoutX="754.0" layoutY="496.0" onMouseClicked="#chooseAvatarPlant" pickOnBounds="true" preserveRatio="true" scaleX="0.7" scaleY="0.7">
          <image>
             <Image url="@../../../images/avatars/Plant.png" />
          </image>
       </ImageView>
-      <Circle fill="WHITE" layoutX="705.0" layoutY="498.0" radius="50.0" scaleX="0.8" scaleY="0.8" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
-      <ImageView fx:id="avatarImage111111" fitHeight="80.0" fitWidth="80.0" layoutX="665.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
+      <Circle fill="WHITE" layoutX="705.0" layoutY="536.0" radius="50.0" scaleX="0.7" scaleY="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <ImageView fx:id="avatarImage111111" fitHeight="80.0" fitWidth="80.0" layoutX="665.0" layoutY="496.0" onMouseClicked="#chooseAvatarSmoke" pickOnBounds="true" preserveRatio="true" scaleX="0.7" scaleY="0.7">
          <image>
             <Image url="@../../../images/avatars/Smoke.png" />
          </image>
       </ImageView>
-      <Circle fill="WHITE" layoutX="611.0" layoutY="498.0" radius="50.0" scaleX="0.8" scaleY="0.8" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
-      <ImageView fx:id="avatarImage1111111" fitHeight="80.0" fitWidth="80.0" layoutX="571.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
+      <Circle fill="WHITE" layoutX="611.0" layoutY="536.0" radius="50.0" scaleX="0.7" scaleY="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <ImageView fx:id="avatarImage1111111" fitHeight="80.0" fitWidth="80.0" layoutX="571.0" layoutY="496.0" onMouseClicked="#chooseAvatarAir" pickOnBounds="true" preserveRatio="true" scaleX="0.7" scaleY="0.7">
          <image>
             <Image url="@../../../images/avatars/Air.png" />
          </image>
       </ImageView>
-      <Label layoutX="541.0" layoutY="432.0" prefHeight="17.0" prefWidth="345.0" text="PICK A NEW AVATAR : " textFill="#c8c33e">
+      <Label layoutX="541.0" layoutY="453.0" prefHeight="17.0" prefWidth="133.0" text="PICK A NEW AVATAR : " textFill="#c8c33e">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button layoutX="676.0" layoutY="635.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="173.0" text="Update avatar" />
+      <Button layoutX="671.0" layoutY="661.0" mnemonicParsing="false" onAction="#updateAvatar" prefHeight="25.0" prefWidth="173.0" text="Update avatar" />
       <Label layoutX="145.0" layoutY="14.0" prefHeight="72.0" prefWidth="206.0" text="Expenditure" textFill="#c8c33e">
          <font>
             <Font name="Viner Hand ITC" size="36.0" />
@@ -144,5 +144,21 @@
       <ChoiceBox fx:id="currencyChoice" layoutX="41.0" layoutY="576.0" prefWidth="150.0" />
       <ChoiceBox fx:id="daysBeforeChoice" layoutX="305.0" layoutY="576.0" prefWidth="150.0" />
       <Button fx:id="loadButton" layoutX="46.0" layoutY="102.0" mnemonicParsing="false" onAction="#loadPieChart" prefHeight="25.0" prefWidth="80.0" text="Load chart" />
+      <Label fx:id="updateProfileErrorLabel" alignment="CENTER" layoutX="857.0" layoutY="373.0" prefHeight="51.0" prefWidth="103.0" text="FILL IN INFO TO UPDATE" textAlignment="CENTER" textFill="RED" wrapText="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="updateAvatarErrorLabel" alignment="CENTER" layoutX="841.0" layoutY="636.0" prefHeight="51.0" prefWidth="149.0" text="SELECT AVATAR TO UPDATE" textAlignment="CENTER" textFill="RED" wrapText="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Circle fill="WHITE" layoutX="754.0" layoutY="462.0" radius="50.0" scaleX="0.75" scaleY="0.75" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <ImageView fx:id="chosenAvatar" fitHeight="80.0" fitWidth="80.0" layoutX="714.0" layoutY="422.0" pickOnBounds="true" preserveRatio="true" scaleX="0.75" scaleY="0.75">
+         <image>
+            <Image url="@../../../images/avatars/Air.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

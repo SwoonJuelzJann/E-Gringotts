@@ -9,17 +9,21 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 import java.util.Date;
 
+import static com.example.egringotts.MongoDBConnection.accountsCollection;
 import static com.example.egringotts.MongoDBConnection.transactionsCollection;
 import static com.example.egringotts.main.activeUsername;
 import static com.example.egringotts.main.mongo;
 
 public class dashboardController {
     @FXML
-    private Label balance_K,balance_S,balance_G;
+    private Label balance_K,balance_S,balance_G,userTypeLabel,maxTransferK,maxTransferS,maxTransferG,exchangeFee,remainingTransactions;
     @FXML
     private TableView<transaction> transferHistoryTable;
     @FXML
@@ -28,13 +32,19 @@ public class dashboardController {
     private TableColumn<transaction,Double> amountColumn;
     @FXML
     private TableColumn<transaction,Date> dateColumn;
+    @FXML
+    private Rectangle userTypeBlock;
 
     private ObservableList<transaction> transactionList;
 
     public void initialize() {
+        // ~~BALANCE DISPLAY
+
         balance_K.setText(String.format("%.2f", mongo.findBalance_K(activeUsername)));
         balance_S.setText(String.format("%.2f", mongo.findBalance_S(activeUsername)));
         balance_G.setText(String.format("%.2f", mongo.findBalance_G(activeUsername)));
+
+        // ~~TRANSACTION HISTORY DISPLAY
 
         Document filter = new Document("username", activeUsername);
         FindIterable<Document> iterable = transactionsCollection.find(filter);    //list out all matching values from database
@@ -60,5 +70,38 @@ public class dashboardController {
         dateColumn.setSortType(TableColumn.SortType.DESCENDING);
         transferHistoryTable.getSortOrder().add(dateColumn);
         transferHistoryTable.sort();
+
+        // ~~USERTYPE DISPLAY
+
+        checkUserType(transactionList.size());
+    }
+
+    public void checkUserType(int totalTransactions) {
+        String userType;
+        if (totalTransactions > 20) {
+            userType = "Platinum Patronus";
+            userTypeBlock.setFill(Color.LIGHTGRAY);
+        } else if (totalTransactions > 10) {
+            userType = "Golden Galleon";
+            userTypeBlock.setFill(Color.GOLD);
+        } else if (totalTransactions > 5) {
+            userType = "Silver Snitch";
+            userTypeBlock.setFill(Color.SILVER);
+        } else {
+            userType = "Bronze Bargainer";
+            userTypeBlock.setFill(Color.valueOf("#CD7F32"));
+        }
+        userTypeLabel.setText(userType);
+        maxTransferK.setText(String.format("%.2f", mongo.findMaxTransferK(userType)));
+        maxTransferS.setText(String.format("%.2f", mongo.findMaxTransferS(userType)));
+        maxTransferG.setText(String.format("%.2f", mongo.findMaxTransferG(userType)));
+        exchangeFee.setText(mongo.findExchangeFee(userType) * 100+"%");
+        remainingTransactions.setText("Perform "+(mongo.findTierUpQuota(userType)-totalTransactions+1)+" more transactions to tier up.");
+
+        if (!mongo.findUserType(activeUsername).equals(userType)){          //updates usertype into database
+            Document user = (Document) accountsCollection.find(new Document("username", activeUsername)).first();     //find document under username
+            Bson updateUser = new Document("userType",userType);                                                      //creates updated entry
+            accountsCollection.updateOne(user,new Document("$set", updateUser));
+        }
     }
 }

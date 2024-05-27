@@ -77,19 +77,19 @@ public class transferController {
             transferErrorLabel.setVisible(true);
             return;
         }
-        if (currencyChoice.getValue().equals("Knut(K)")){                       //check if balance is sufficient
-            if (Double.parseDouble(amountField.getText()) > mongo.findBalance_K(activeUsername)) {
+        if (currencyChoice.getValue().equals("Knut(K)")){                       //check if balance is sufficient & not restricted by usertype
+            if (Double.parseDouble(amountField.getText()) > mongo.findBalance_K(activeUsername) || Double.parseDouble(amountField.getText()) > mongo.findMaxTransferK(mongo.findUserType(activeUsername))) {
                 transferErrorLabel.setText("INSUFFICIENT FUNDS");
                 transferErrorLabel.setTextFill(Color.RED);
                 transferErrorLabel.setVisible(true);
                 return;
             }
             else {
-                addAndRemoveFromBalance("balance_K",Double.parseDouble(amountField.getText()));
+                addAndRemoveFromBalance("balance_K",Double.parseDouble(amountField.getText()) );
             }
         }
         else if (currencyChoice.getValue().equals("Sickle(S)")){
-            if (Double.parseDouble(amountField.getText()) > mongo.findBalance_S(activeUsername)) {
+            if (Double.parseDouble(amountField.getText()) > mongo.findBalance_S(activeUsername) || Double.parseDouble(amountField.getText()) > mongo.findMaxTransferS(mongo.findUserType(activeUsername))) {
                 transferErrorLabel.setText("INSUFFICIENT FUNDS");
                 transferErrorLabel.setTextFill(Color.RED);
                 transferErrorLabel.setVisible(true);
@@ -100,7 +100,7 @@ public class transferController {
             }
         }
         else if (currencyChoice.getValue().equals("Galleon(G)")){
-            if (Double.parseDouble(amountField.getText()) > mongo.findBalance_G(activeUsername)) {
+            if (Double.parseDouble(amountField.getText()) > mongo.findBalance_G(activeUsername) || Double.parseDouble(amountField.getText()) > mongo.findMaxTransferG(mongo.findUserType(activeUsername))) {
                 transferErrorLabel.setText("INSUFFICIENT FUNDS");
                 transferErrorLabel.setTextFill(Color.RED);
                 transferErrorLabel.setVisible(true);

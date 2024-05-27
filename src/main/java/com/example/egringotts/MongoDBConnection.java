@@ -99,9 +99,9 @@ public class MongoDBConnection implements AutoCloseable, Closeable {
         return (String) foundDoc.get("userAddress");
     }
 
-    public Integer findPostcode(String username){
+    public String findPostcode(String username){
         Document foundDoc = findByUsername(accountsCollection, username);
-        return (Integer) foundDoc.get("postcode");
+        return (String) foundDoc.get("postcode");
     }
 
     public String findUserType(String username){
@@ -187,18 +187,28 @@ public class MongoDBConnection implements AutoCloseable, Closeable {
         return (Document) collectionName.find(new Document("name",userType)).first();
     }
 
-    public String findMaxTransferK(String userType){
+    public double findMaxTransferK(String userType){
         Document foundDoc = findByUserType(userTypesCollection, userType);
-        return (String) foundDoc.get("maxTransferK");
+        return (double) foundDoc.get("maxTransferK");
     }
 
-    public String findMaxTransferS(String userType){
+    public double findMaxTransferS(String userType){
         Document foundDoc = findByUserType(userTypesCollection, userType);
-        return (String) foundDoc.get("maxTransferS");
+        return (double) foundDoc.get("maxTransferS");
     }
 
-    public String findMaxTransferG(String userType){
+    public double findMaxTransferG(String userType){
         Document foundDoc = findByUserType(userTypesCollection, userType);
-        return (String) foundDoc.get("maxTransferG");
+        return (double) foundDoc.get("maxTransferG");
+    }
+
+    public double findExchangeFee(String userType){
+        Document foundDoc = findByUserType(userTypesCollection, userType);
+        return (Double) foundDoc.get("exchangeFee");
+    }
+
+    public int findTierUpQuota(String userType){
+        Document foundDoc = findByUserType(userTypesCollection, userType);
+        return (Integer) foundDoc.get("tierUpQuota");
     }
 }
