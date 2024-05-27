@@ -23,14 +23,14 @@ public class main extends Application {
             mongo = new MongoDBConnection();
             MongoDBConnection.connection();
 
-            new GMailer().sendMail("WELCOME TO E-GRINGOTTS", """
-                salam,
-                                
-                New account registered.
-                                
-                Best regards,
-                goblin
-                """);
+//            new GMailer().sendMail("WELCOME TO E-GRINGOTTS", """
+//                salam,
+//
+//                New account registered.
+//
+//                Best regards,
+//                goblin
+//                """);
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
             stage.setScene(new Scene(root));

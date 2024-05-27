@@ -1,6 +1,7 @@
 package controllers;
 
 import com.example.egringotts.account;
+import com.example.egringotts.security;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -138,6 +139,12 @@ public class goblinPageController {
                 isGoblin,
                 choosenAvatarUrl,
                 emailField.getText());
+
+        String password = newAcc.getPassword();
+        String storedSaltedHash = security.getSaltedHash(password);
+        newAcc.setPassword(storedSaltedHash);
+
+
         mongo.addAccountDocument(newAcc);
         errorText.setVisible(false);
         clearTextFields(newAccountTab);

@@ -1,6 +1,7 @@
 package controllers;
 
 import com.example.egringotts.MongoDBConnection;
+import com.example.egringotts.security;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -96,7 +97,8 @@ public class loginController{
         if(mongo.findByUsername(mongo.accountsCollection,username)==null){
             return false;
         }
+
         String storedPassword = mongo.findPassword(username);
-        return password.equals(storedPassword);
+        return security.verifyPassword(password, storedPassword);
     }
 }
