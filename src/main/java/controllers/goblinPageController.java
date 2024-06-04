@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
@@ -54,6 +55,7 @@ public class goblinPageController {
         SDepoField.setTextFormatter(createNumericTextFormatter());
         GDepoField.setTextFormatter(createNumericTextFormatter());
         errorText.setVisible(false);
+        choosenAvatarUrl = "/images/avatars/Air.png";
     }
 
     public void logout(ActionEvent event) throws IOException {
@@ -116,11 +118,13 @@ public class goblinPageController {
             || numberField.getText().isEmpty() || addressField.getText().isEmpty() || postcodeField.getText().isEmpty() || KDepoField.getText().isEmpty()
             || SDepoField.getText().isEmpty() || GDepoField.getText().isEmpty()) {
             errorText.setVisible(true);
+            errorText.setTextFill(Color.RED);
             errorText.setText("FILL IN ALL ACCOUNT CREDENTIALS");
             return;
         }
         if (passwordTextfield.getText().isEmpty() || !verifyPasswordTextfield.getText().equals(passwordTextfield.getText()) || passwordTextfield.getText().length() < 6) {
             errorText.setVisible(true);
+            errorText.setTextFill(Color.RED);
             errorText.setText("PASSWORD SHOULD BE ATLEAST 6 CHARACTERS");
             return;
         }
@@ -148,7 +152,9 @@ public class goblinPageController {
         mongo.addAccountDocument(newAcc);
         errorText.setVisible(false);
         clearTextFields(newAccountTab);
-        System.out.println("Account created");
+        errorText.setVisible(true);
+        errorText.setTextFill(Color.GREEN);
+        errorText.setText("ACCOUNT CREATED");
     }
 
     public static void clearTextFields(AnchorPane pane) {

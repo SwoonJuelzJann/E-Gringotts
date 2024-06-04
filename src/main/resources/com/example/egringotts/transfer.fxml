@@ -9,9 +9,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #0E5B51;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="controllers.transferController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #0E5B51;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.transferController">
    <children>
-      <Rectangle arcHeight="50.0" arcWidth="500.0" fill="#999999" height="209.0" layoutX="60.0" layoutY="106.0" stroke="BLACK" strokeType="INSIDE" width="556.0">
+      <Rectangle arcHeight="50.0" arcWidth="500.0" fill="#999999" height="209.0" layoutX="222.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="556.0">
          <effect>
             <InnerShadow />
          </effect>
@@ -21,40 +21,40 @@
             <Font name="Viner Hand ITC" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="91.0" layoutY="413.0" text="TRANSFTER AMOUNT" textFill="#c8c33e">
+      <Label layoutX="253.0" layoutY="427.0" text="TRANSFTER AMOUNT" textFill="#c8c33e">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="amountField" layoutX="301.0" layoutY="404.0" />
-      <ChoiceBox fx:id="currencyChoice" layoutX="474.0" layoutY="404.0" prefHeight="25.0" prefWidth="116.0" />
-      <ChoiceBox fx:id="categoryChoice" layoutX="303.0" layoutY="462.0" prefHeight="25.0" prefWidth="289.0" />
-      <Label layoutX="91.0" layoutY="467.0" prefHeight="25.0" prefWidth="182.0" text="CATEGORY OF EXPENDITURE" textFill="#c8c33e" wrapText="true">
+      <TextField fx:id="amountField" layoutX="463.0" layoutY="418.0" />
+      <ChoiceBox fx:id="currencyChoice" layoutX="636.0" layoutY="418.0" prefHeight="25.0" prefWidth="116.0" />
+      <ChoiceBox fx:id="categoryChoice" layoutX="465.0" layoutY="476.0" prefHeight="25.0" prefWidth="289.0" />
+      <Label layoutX="253.0" layoutY="481.0" prefHeight="25.0" prefWidth="182.0" text="CATEGORY OF EXPENDITURE" textFill="#c8c33e" wrapText="true">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="searchField" layoutX="303.0" layoutY="175.0" prefHeight="25.0" prefWidth="289.0" />
-      <ChoiceBox fx:id="usernameChoice" layoutX="303.0" layoutY="350.0" prefHeight="25.0" prefWidth="289.0" />
-      <Label layoutX="91.0" layoutY="353.0" prefHeight="17.0" prefWidth="157.0" text="RECEIVER USERNAME" textFill="#c8c33e" wrapText="true">
+      <TextField fx:id="searchField" layoutX="465.0" layoutY="189.0" prefHeight="25.0" prefWidth="289.0" />
+      <ChoiceBox fx:id="usernameChoice" layoutX="465.0" layoutY="364.0" prefHeight="25.0" prefWidth="289.0" />
+      <Label layoutX="253.0" layoutY="367.0" prefHeight="17.0" prefWidth="157.0" text="RECEIVER USERNAME" textFill="#c8c33e" wrapText="true">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="88.0" layoutY="134.0" prefHeight="27.0" prefWidth="474.0" text="SEARCH FOR USERS BY ENTERING PREFERED DETAIL :">
+      <Label layoutX="250.0" layoutY="148.0" prefHeight="27.0" prefWidth="474.0" text="SEARCH FOR USERS BY ENTERING PREFERED DETAIL :">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button layoutX="252.0" layoutY="217.0" mnemonicParsing="false" onAction="#searchUser" prefHeight="25.0" prefWidth="173.0" text="Search user" />
-      <ChoiceBox fx:id="searchChoice" layoutX="88.0" layoutY="175.0" prefHeight="25.0" prefWidth="173.0" />
-      <Label fx:id="searchErrorLabel" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="177.0" layoutY="261.0" prefHeight="37.0" prefWidth="324.0" text="NO USERNAMES FOUND, CHOICES UPDATED" textFill="RED" wrapText="true">
+      <Button layoutX="414.0" layoutY="231.0" mnemonicParsing="false" onAction="#searchUser" prefHeight="25.0" prefWidth="173.0" text="Search user" />
+      <ChoiceBox fx:id="searchChoice" layoutX="250.0" layoutY="189.0" prefHeight="25.0" prefWidth="173.0" />
+      <Label fx:id="searchErrorLabel" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="339.0" layoutY="275.0" prefHeight="37.0" prefWidth="324.0" text="NO USERNAMES FOUND, CHOICES UPDATED" textFill="RED" wrapText="true">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button fx:id="transferButton" layoutX="252.0" layoutY="510.0" mnemonicParsing="false" onAction="#transfer" prefHeight="25.0" prefWidth="173.0" text="Transfer" />
-      <Label fx:id="transferErrorLabel" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="177.0" layoutY="553.0" prefHeight="62.0" prefWidth="324.0" text="TRANSFER UNSUCCESSFUL" textFill="RED" wrapText="true">
+      <Button fx:id="transferButton" layoutX="414.0" layoutY="524.0" mnemonicParsing="false" onAction="#transfer" prefHeight="25.0" prefWidth="173.0" text="Transfer" />
+      <Label fx:id="transferErrorLabel" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="339.0" layoutY="567.0" prefHeight="62.0" prefWidth="324.0" text="TRANSFER UNSUCCESSFUL" textFill="RED" wrapText="true">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
