@@ -1,11 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #777777;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #0E5B51;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.exchangeController">
    <children>
-      <Label layoutX="286.0" layoutY="183.0" text="exchange" />
+      <Label layoutX="322.0" layoutY="27.0" text="Gringotts Exchange" textFill="#c7c03e">
+         <font>
+            <Font name="Viner Hand ITC" size="36.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="50.0" arcWidth="500.0" fill="#999999" height="364.0" layoutX="222.0" layoutY="126.0" stroke="BLACK" strokeType="INSIDE" width="556.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e5b51" height="30.0" layoutX="269.0" layoutY="166.0" stroke="BLACK" strokeType="INSIDE" width="162.0" />
+      <Rectangle arcHeight="50.0" arcWidth="500.0" fill="#999999" height="147.0" layoutX="90.0" layoutY="519.0" stroke="BLACK" strokeType="INSIDE" width="821.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e5b51" height="30.0" layoutX="269.0" layoutY="216.0" stroke="BLACK" strokeType="INSIDE" width="162.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e5b51" height="30.0" layoutX="269.0" layoutY="269.0" stroke="BLACK" strokeType="INSIDE" width="162.0" />
+      <Label layoutX="311.0" layoutY="160.0" prefHeight="42.0" prefWidth="78.0" text="Currency" textFill="#c7c03e">
+         <font>
+            <Font name="Viner Hand ITC" size="17.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="oldCurrency" layoutX="482.0" layoutY="168.0" prefHeight="26.0" prefWidth="251.0" />
+      <Label layoutX="314.0" layoutY="210.0" prefHeight="42.0" prefWidth="71.0" text="Amount" textFill="#c7c03e">
+         <font>
+            <Font name="Viner Hand ITC" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="293.0" layoutY="263.0" prefHeight="42.0" prefWidth="114.0" text="New Currency" textFill="#c7c03e">
+         <font>
+            <Font name="Viner Hand ITC" size="17.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="newCurrency" layoutX="482.0" layoutY="271.0" prefHeight="26.0" prefWidth="251.0" />
+      <TextField fx:id="myText" layoutX="482.0" layoutY="219.0" prefHeight="26.0" prefWidth="251.0" />
+      <Label layoutX="149.0" layoutY="557.0" prefHeight="18.0" prefWidth="703.0" text="EVERY EXCHANGING CURRENCIES PROCESS WILL CHARGE YOU PROCESSING FEE. THE AMOUNT OF FEE AS STATED BELOW:" textFill="#d71313">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="419.0" layoutY="530.0" text="IMPORTANT NOTES !!!" textFill="#d71313">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="188.0" layoutY="576.0" prefHeight="1.0" prefWidth="722.0" text="I)    BRONZE BARGAINER: 2%" textFill="#d71313">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="188.0" layoutY="594.0" prefHeight="1.0" prefWidth="722.0" text="II)   SILVER SNITCH: 4%" textFill="#d71313">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="188.0" layoutY="612.0" prefHeight="1.0" prefWidth="722.0" text="III)  GOLDEN GALLEON: 6%" textFill="#d71313">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="188.0" layoutY="630.0" prefHeight="1.0" prefWidth="722.0" text="IV)  PLATINUM PATRONUS: 8%" textFill="#d71313">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="exchange" layoutX="265.0" layoutY="337.0" mnemonicParsing="false" onAction="#exchangeCurrency" prefHeight="26.0" prefWidth="472.0" text="EXCANGE" />
+      <Label layoutX="419.0" layoutY="403.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="message" alignment="CENTER" layoutX="268.0" layoutY="381.0" prefHeight="65.0" prefWidth="464.0" text="MESSAGE WILL APPEAR HERE." textAlignment="CENTER" textFill="#e1d95e">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
