@@ -213,6 +213,24 @@ public class MongoDBConnection implements AutoCloseable, Closeable {
         return (Double) foundDoc.get("exchangeFee");
     }
 
+    /*public double findExchangeFee(String userType) {
+        Document foundDoc = findByUserType(userTypesCollection, userType);
+
+        if (foundDoc == null) {
+            System.out.println("No document found for user type: " + userType);
+            // Handle the case where no document is found, e.g., return a default fee or throw an exception
+            return 0.0; // or throw new RuntimeException("No exchange fee found for user type: " + userType);
+        }
+
+        Double fee = (Double) foundDoc.get("exchangeFee");
+        if (fee == null) {
+            System.out.println("Exchange fee is null for user type: " + userType);
+            return 0.0; // or throw new RuntimeException("Exchange fee is null for user type: " + userType);
+        }
+
+        return fee;
+    }*/
+
     public int findTierUpQuota(String userType){
         Document foundDoc = findByUserType(userTypesCollection, userType);
         return (Integer) foundDoc.get("tierUpQuota");

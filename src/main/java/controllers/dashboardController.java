@@ -35,8 +35,8 @@ public class dashboardController {
     @FXML
     private Rectangle userTypeBlock;
 
-    private ObservableList<transaction> transactionList;
-
+    public ObservableList<transaction> transactionList;
+    public String userType;
     public void initialize() {
         // ~~BALANCE DISPLAY
 
@@ -77,7 +77,7 @@ public class dashboardController {
     }
 
     public void checkUserType(int totalTransactions) {
-        String userType;
+        //String userType;
         if (totalTransactions > 20) {
             userType = "Platinum Patronus";
             userTypeBlock.setFill(Color.LIGHTGRAY);
@@ -96,6 +96,8 @@ public class dashboardController {
         maxTransferS.setText(String.format("%.2f", mongo.findMaxTransferS(userType)));
         maxTransferG.setText(String.format("%.2f", mongo.findMaxTransferG(userType)));
         exchangeFee.setText(mongo.findExchangeFee(userType) * 100+"%");
+        System.out.println("dashboard: "+mongo.findExchangeFee(userType));
+        System.out.println(getUserType());
         remainingTransactions.setText("Perform "+(mongo.findTierUpQuota(userType)-totalTransactions+1)+" more transactions to tier up.");
 
         if (!mongo.findUserType(activeUsername).equals(userType)){          //updates usertype into database
@@ -104,4 +106,8 @@ public class dashboardController {
             accountsCollection.updateOne(user,new Document("$set", updateUser));
         }
     }
+    public String getUserType(){
+        return userType;
+    }
+
 }
