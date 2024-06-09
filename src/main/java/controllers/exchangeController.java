@@ -57,7 +57,6 @@ public class exchangeController  {
             transactionList.add(pastTransaction);                                   //adding them into the list
         }
         getUserTypeeee(transactionList.size());
-        fee = mongo.findExchangeFee(getUserTypeeee(transactionList.size()));
     }
 
     public void exchangeCurrency(ActionEvent event) {
@@ -88,7 +87,6 @@ public class exchangeController  {
                     amount = amount*29;
 
                     updateCurencyValue("balance_K",totalDeduct,"balance_S",amount);
-                    //message.setText("EXCHANGE "+ amount +" FROM "+changeFrom+" TO "+changeTo+" IS SUCCESSFULL !");
                     setMessage();
                 }else {
                     message.setText("INSUFFICIENT AMOUNT TO EXCHANGE.");
@@ -108,7 +106,6 @@ public class exchangeController  {
                     amount = amount*493;
 
                     updateCurencyValue("balance_K",totalDeduct,"balance_G",amount);
-                    //message.setText("EXCHANGE "+ amount +" FROM "+changeFrom+" TO "+changeTo+" IS SUCCESSFULL !");
                     setMessage();
                 }else {
                     message.setText("INSUFFICIENT AMOUNT TO EXCHANGE.");
@@ -128,7 +125,6 @@ public class exchangeController  {
                     amount = amount/29;
 
                     updateCurencyValue("balance_S",totalDeduct,"balance_K",amount);
-                    //message.setText("EXCHANGE "+ amount +" FROM "+changeFrom+" TO "+changeTo+" IS SUCCESSFULL !");
                     setMessage();
                 }else {
                     message.setText("INSUFFICIENT AMOUNT TO EXCHANGE.");
@@ -148,7 +144,6 @@ public class exchangeController  {
                     amount = amount*17;
 
                     updateCurencyValue("balance_S",totalDeduct,"balance_G",amount);
-                    //message.setText("EXCHANGE "+ amount +" FROM "+changeFrom+" TO "+changeTo+" IS SUCCESSFULL !");
                     setMessage();
                 }else {
                     message.setText("INSUFFICIENT AMOUNT TO EXCHANGE.");
@@ -168,7 +163,6 @@ public class exchangeController  {
                     amount = amount/493;
 
                     updateCurencyValue("balance_G",totalDeduct,"balance_K",amount);
-                    //message.setText("EXCHANGE "+ amount +" FROM "+changeFrom+" TO "+changeTo+" IS SUCCESSFULL !");
                     setMessage();
                 }else {
                     message.setText("INSUFFICIENT AMOUNT TO EXCHANGE.");
@@ -188,7 +182,6 @@ public class exchangeController  {
                     amount = amount/17;
 
                     updateCurencyValue("balance_G",totalDeduct,"balance_S",amount);
-                    //message.setText("EXCHANGE "+ amount +" FROM "+changeFrom+" TO "+changeTo+" IS SUCCESSFULL !");
                     setMessage();
                 }else {
                     message.setText("INSUFFICIENT AMOUNT TO EXCHANGE.");
