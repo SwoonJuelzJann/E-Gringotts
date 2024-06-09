@@ -57,6 +57,7 @@ public class exchangeController  {
             transactionList.add(pastTransaction);                                   //adding them into the list
         }
         getUserTypeeee(transactionList.size());
+        fee = mongo.findExchangeFee(getUserTypeeee(transactionList.size()));
     }
 
     public void exchangeCurrency(ActionEvent event) {
@@ -74,10 +75,8 @@ public class exchangeController  {
                 message.setText("YOU CANNOT EXCHANGE TO THE SAME CURRENCY");
             }
             else if(changeFrom.equalsIgnoreCase("Knut(K)") && changeTo.equalsIgnoreCase("Sickle(S)")){
-                //System.out.println(dashboard.getUserType());   //abaikan ni sbb nak try debug
-                if(amount <= mongo.findBalance_K(activeUsername) ) {     //checking if amount <= balance+fee
+                if(amount+(fee*amount) <= mongo.findBalance_K(activeUsername) ) {     //checking if amount <= balance+fee
 
-                    //fee = mongo.findExchangeFee(getUserTypeeee(transactionList.size()));                  //fee percentage// ni yang problem
                     System.out.println(fee);
 
                     if (fee == 0) {
@@ -96,9 +95,8 @@ public class exchangeController  {
                 }
 
             }else if(changeFrom.equalsIgnoreCase("Knut(K)") && changeTo.equalsIgnoreCase("Galleon(G)")){
-                if(amount <= mongo.findBalance_K(activeUsername)) {
+                if(amount+(fee*amount) <= mongo.findBalance_K(activeUsername)) {
 
-                    fee = mongo.findExchangeFee(getUserTypeeee(transactionList.size()));                  //fee percentage// ni yang problem
                     System.out.println(fee);
 
                     if (fee == 0) {
@@ -117,9 +115,8 @@ public class exchangeController  {
                 }
 
             }else if(changeFrom.equalsIgnoreCase("Sickle(S)") && changeTo.equalsIgnoreCase("Knut(K)")){
-                if(amount <= mongo.findBalance_S(activeUsername)) {
+                if(amount+(fee*amount) <= mongo.findBalance_S(activeUsername)) {
 
-                    fee = mongo.findExchangeFee(getUserTypeeee(transactionList.size()));                  //fee percentage// ni yang problem
                     System.out.println(fee);
 
                     if (fee == 0) {
@@ -138,9 +135,8 @@ public class exchangeController  {
                 }
 
             }else if(changeFrom.equalsIgnoreCase("Sickle(S)") && changeTo.equalsIgnoreCase("Galleon(G)")){
-                if(amount <= mongo.findBalance_S(activeUsername)) {
+                if(amount+(fee*amount) <= mongo.findBalance_S(activeUsername)) {
 
-                    fee = mongo.findExchangeFee(getUserTypeeee(transactionList.size()));                  //fee percentage// ni yang problem
                     System.out.println(fee);
 
                     if (fee == 0) {
@@ -159,9 +155,8 @@ public class exchangeController  {
                 }
 
             }else if(changeFrom.equalsIgnoreCase("Galleon(G)") && changeTo.equalsIgnoreCase("Knut(K)")){
-                if(amount <= mongo.findBalance_G(activeUsername)) {
+                if(amount+(fee*amount) <= mongo.findBalance_G(activeUsername)) {
 
-                    fee = mongo.findExchangeFee(getUserTypeeee(transactionList.size()));                  //fee percentage// ni yang problem
                     System.out.println(fee);
 
                     if (fee == 0) {
@@ -180,9 +175,8 @@ public class exchangeController  {
                 }
 
             }else {
-                if(amount <= mongo.findBalance_G(activeUsername)) {
+                if(amount+(fee*amount) <= mongo.findBalance_G(activeUsername)) {
 
-                    fee = mongo.findExchangeFee(getUserTypeeee(transactionList.size()));                  //fee percentage// ni yang problem
                     System.out.println(fee);
 
                     if (fee == 0) {
@@ -234,7 +228,7 @@ public class exchangeController  {
     private void setMessage(){
         String formattedOriAmount = String.format("%.2f", originalAmount);
         String formattedTotalDeduct = String.format("%.2f", totalDeduct);
-        String formattedFee = String.format("%.2f", fee);
+        String formattedFee = String.format("%.2f", (fee*originalAmount));
         String formattedAmount = String.format("%.2f", amount);
 
         message.setText("EXCHANGE "+ formattedOriAmount +" FROM "+changeFrom+" TO "+changeTo+" IS SUCCESSFULL !"
