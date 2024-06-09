@@ -54,5 +54,6 @@ public class security {
         String hashOfInput = hashPassword(salt, password);
         return hashOfInput.equals(storedHash);
     }
+
 }
 

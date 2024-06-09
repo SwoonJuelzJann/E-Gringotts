@@ -17,8 +17,9 @@ public class account {
     private boolean goblinStatus;
     private String avatar;
     private String email;
+    private String pin;
 
-    public account(String username, String password, String firstName, String lastName, String phoneNo, String userAddress, String postcode, String userType, double balance_K, double balance_S, double balance_G, boolean goblinStatus, String avatar, String email) {
+    public account(String username, String password, String firstName, String lastName, String phoneNo, String userAddress, String postcode, String userType, double balance_K, double balance_S, double balance_G, boolean goblinStatus, String avatar, String email, String pin) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -33,6 +34,7 @@ public class account {
         this.goblinStatus = goblinStatus;
         this.avatar = avatar;
         this.email = email;
+        this.pin = pin;
     }
 
     // Getters and setters for each instance variable
@@ -147,5 +149,14 @@ public class account {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getPin() {
+        return pin;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
+    }
+
 }
 

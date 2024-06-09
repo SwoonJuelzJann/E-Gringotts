@@ -1,16 +1,23 @@
 package controllers;
 
+import com.example.egringotts.security;
 import com.example.egringotts.transaction;
 import com.mongodb.client.FindIterable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -27,7 +34,7 @@ public class transferController {
     @FXML
     private ChoiceBox<String> usernameChoice,currencyChoice,categoryChoice,searchChoice;
     @FXML
-    private TextField searchField,amountField;
+    private TextField searchField,amountField, pinField;
     @FXML
     private Label searchErrorLabel,transferErrorLabel;
 
@@ -65,6 +72,20 @@ public class transferController {
     }
 
     public void transfer(ActionEvent event) {
+
+        String pin = pinField.getText();
+
+        if (pin.isEmpty()) {
+            transferErrorLabel.setVisible(true);
+            transferErrorLabel.setText("PLEASE FILL IN YOUR PIN");
+            return;
+        }
+        if (!validatePin(pin)) {
+            transferErrorLabel.setVisible(true);
+            transferErrorLabel.setText("INVALID PIN");
+            return;
+        }
+
         if (usernameChoice.getValue()==null || currencyChoice.getValue()==null || categoryChoice.getValue()==null) {    //check if fields are empty
             transferErrorLabel.setText("PLEASE FILL IN ALL REQUIRED FIELDS");
             transferErrorLabel.setTextFill(Color.RED);
@@ -126,6 +147,14 @@ public class transferController {
         Document receiver = (Document) accountsCollection.find(new Document("username",usernameChoice.getValue())).first();     //process repeated for receiver
         Bson updateReceiver = new Document(balance_K,mongo.findBalance(balance_K,usernameChoice.getValue())+total);
         accountsCollection.updateOne(receiver,new Document("$set", updateReceiver));
+    }
+
+    public boolean validatePin(String pin){
+        String storedPin = mongo.findPin(pin);
+        if(pin.length() < 6){
+            return false;
+        }
+        return security.verifyPassword(pin, storedPin);
     }
 
     //method to allow only digits and decimal values in textfield

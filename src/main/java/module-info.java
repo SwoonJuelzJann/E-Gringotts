@@ -15,7 +15,7 @@ module com.example.egringotts {
     requires org.apache.commons.codec;
     requires mail;
     requires jdk.httpserver;
-
+    requires com.google.api.client.json.jackson2;
 
 
     opens com.example.egringotts to javafx.fxml;
