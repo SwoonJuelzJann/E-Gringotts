@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -52,7 +53,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8c33e" height="150.0" layoutX="125.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8c33e" height="150.0" layoutX="675.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8c33e" height="150.0" layoutX="400.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Label layoutX="142.0" layoutY="326.0" text="Transfer history" textFill="#c8c33e">
+      <Label layoutX="141.0" layoutY="326.0" text="Transfer history" textFill="#c8c33e">
          <font>
             <Font name="Viner Hand ITC" size="36.0" />
          </font>
@@ -164,5 +165,6 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
+      <ChoiceBox fx:id="filterButton" layoutX="446.0" layoutY="362.0" prefHeight="26.0" prefWidth="106.0" />
    </children>
 </AnchorPane>

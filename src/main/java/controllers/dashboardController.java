@@ -5,6 +5,7 @@ import com.mongodb.client.FindIterable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -34,9 +35,12 @@ public class dashboardController {
     private TableColumn<transaction,Date> dateColumn;
     @FXML
     private Rectangle userTypeBlock;
+    @FXML
+    private ChoiceBox<String> filterButton;
 
     public ObservableList<transaction> transactionList;
     public String userType;
+
     public void initialize() {
         // ~~BALANCE DISPLAY
 
@@ -45,7 +49,18 @@ public class dashboardController {
         balance_G.setText(String.format("%.2f", mongo.findBalance_G(activeUsername)));
 
         // ~~TRANSACTION HISTORY DISPLAY
+        loadTransaction();
 
+        filterButton.setItems(FXCollections.observableArrayList("All","Food","Transportation","Property","Utilities","Healthcare",
+                "Entertainment","Clothing/Vanity","Personal Care/Hygene","Others"));
+        filterButton.setValue("All");
+        filterButton.setOnAction(e -> filter());
+
+        // ~~USERTYPE DISPLAY
+
+        checkUserType(transactionList.size());
+    }
+    public void loadTransaction(){
         Document filter = new Document("username", activeUsername);
         FindIterable<Document> iterable = transactionsCollection.find(filter);    //list out all matching values from database
         transactionList = FXCollections.observableArrayList();
@@ -70,10 +85,6 @@ public class dashboardController {
         dateColumn.setSortType(TableColumn.SortType.DESCENDING);
         transferHistoryTable.getSortOrder().add(dateColumn);
         transferHistoryTable.sort();
-
-        // ~~USERTYPE DISPLAY
-
-        checkUserType(transactionList.size());
     }
 
     public void checkUserType(int totalTransactions) {
@@ -97,7 +108,6 @@ public class dashboardController {
         maxTransferG.setText(String.format("%.2f", mongo.findMaxTransferG(userType)));
         exchangeFee.setText(mongo.findExchangeFee(userType) * 100+"%");
         System.out.println("dashboard: "+mongo.findExchangeFee(userType));
-        System.out.println(getUserType());
         remainingTransactions.setText("Perform "+(mongo.findTierUpQuota(userType)-totalTransactions+1)+" more transactions to tier up.");
 
         if (!mongo.findUserType(activeUsername).equals(userType)){          //updates usertype into database
@@ -106,8 +116,26 @@ public class dashboardController {
             accountsCollection.updateOne(user,new Document("$set", updateUser));
         }
     }
-    public String getUserType(){
-        return userType;
+
+    public void filter(){
+        String selectedCategory = filterButton.getValue();
+
+        // If "All" is selected, display all transactions
+        if ("All".equals(selectedCategory)) {
+            transferHistoryTable.setItems(transactionList);
+            return;
+        }
+
+        // Create a filtered list based on the selected category
+        ObservableList<transaction> filteredList = FXCollections.observableArrayList();
+        for (transaction t : transactionList) {
+            if (t.getCategory().equals(selectedCategory)) {
+                filteredList.add(t);
+            }
+        }
+
+        transferHistoryTable.setItems(filteredList);
+        transferHistoryTable.sort();
     }
 
 }
