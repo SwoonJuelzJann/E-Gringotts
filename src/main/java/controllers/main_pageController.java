@@ -1,5 +1,6 @@
 package controllers;
 
+import com.example.egringotts.security;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -11,25 +12,32 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
 import javafx.util.Duration;
+import org.bson.Document;
+import org.bson.conversions.Bson;
 
 import java.io.IOException;
 import java.util.Objects;
 
+import static com.example.egringotts.MongoDBConnection.accountsCollection;
 import static com.example.egringotts.main.activeUsername;
 import static com.example.egringotts.main.mongo;
 
 public class main_pageController {
     @FXML
-    private Button logoutButton;
+    private Button logoutButton,changePinButton,setPinButton;
+    @FXML
+    private TextField pinField;
     @FXML
     private StackPane stackPane_main;
     @FXML
@@ -41,6 +49,8 @@ public class main_pageController {
         nameLabel.setText(mongo.findFirstName(activeUsername));
         avatarImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(mongo.findAvatar(activeUsername))))); //reminder image path kena ada '/' kat depan
 //        avatarImage.setImage(new Image("/Air.png"));
+        pinField.setVisible(false);
+        setPinButton.setVisible(false);
     }
 
     public void logout(ActionEvent event) throws IOException {
@@ -72,6 +82,36 @@ public class main_pageController {
 
     }
 
+    public void changePin(ActionEvent event) throws IOException {
+        changePinButton.setVisible(false);
+        setPinButton.setVisible(true);
+        pinField.setVisible(true);
+    }
+
+//    public void setPin(ActionEvent event) throws IOException {
+//
+//        String pin = pinField.getText();
+//
+//        if (pin.isEmpty()){
+//            setPinButton.setText("PLEASE ENTER PIN");
+//            setPinButton.setTextFill(Color.RED);
+//            setPinButton.setStyle("-fx-font-size: 8;"+"-fx-background-color:  #0E5B51;");
+//            return;
+//        }
+//        if (validatePin(pin)) {
+//            setPinButton.setText("PLEASE ENTER VALID PIN");
+//            setPinButton.setTextFill(Color.RED);
+//            setPinButton.setStyle("-fx-font-size: 8;"+"-fx-background-color:  #0E5B51;");
+//            return;
+//        }
+
+        //Document sender = (Document) accountsCollection.find(new Document("pin", activeUsername)).first();     //find document under username
+        //Bson updateSender = new Document("pin", pin);                      //creates updated entry
+        //accountsCollection.updateOne(sender,new Document("$set", updateSender));
+
+//
+//    }
+
     public void openPage(String pageFile) throws IOException {
         AnchorPane anchorPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(pageFile)));
         AnchorPane paneToRemove = (AnchorPane) stackPane_main.getChildren().get(0);
@@ -83,7 +123,7 @@ public class main_pageController {
         stackPane_main.getChildren().add(anchorPane);
 
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(anchorPane.translateYProperty(), 0, Interpolator.EASE_IN);
+        KeyValue kv = new KeyValue(anchorPane.translateYProperty(), 0, Interpolator.EASE_OUT);
         KeyFrame kf = new KeyFrame(Duration.seconds(0.5), kv);
         timeline.getKeyFrames().add(kf);
         timeline.setOnFinished(event1 -> {
@@ -107,9 +147,5 @@ public class main_pageController {
             }
         }
         return true;
-    }
-
-    public Image getAvatarImage() {
-        return avatarImage.getImage();
     }
 }

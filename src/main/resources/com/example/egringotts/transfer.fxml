@@ -53,11 +53,17 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button fx:id="transferButton" layoutX="414.0" layoutY="524.0" mnemonicParsing="false" onAction="#transfer" prefHeight="25.0" prefWidth="173.0" text="Transfer" />
-      <Label fx:id="transferErrorLabel" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="339.0" layoutY="567.0" prefHeight="62.0" prefWidth="324.0" text="TRANSFER UNSUCCESSFUL" textFill="RED" wrapText="true">
+      <Button fx:id="transferButton" layoutX="413.0" layoutY="571.0" mnemonicParsing="false" onAction="#transfer" prefHeight="25.0" prefWidth="173.0" text="Transfer" />
+      <Label fx:id="transferErrorLabel" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="338.0" layoutY="605.0" prefHeight="62.0" prefWidth="324.0" text="TRANSFER UNSUCCESSFUL" textFill="RED" wrapText="true">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
+      <Label layoutX="253.0" layoutY="520.0" prefHeight="25.0" prefWidth="182.0" text="PIN" textFill="#c8c33e" wrapText="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="pinField" layoutX="463.0" layoutY="520.0" />
    </children>
 </AnchorPane>

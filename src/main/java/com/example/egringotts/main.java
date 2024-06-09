@@ -16,21 +16,16 @@ public class main extends Application {
 
     public static String activeUsername = "DsPalat123";  //testing
     public static MongoDBConnection mongo;
+    public static GMailer emailSender;
 
     @Override
     public void start(Stage stage) throws Exception {
         try{
             mongo = new MongoDBConnection();
             MongoDBConnection.connection();
+            emailSender = new GMailer();
 
-//            new GMailer().sendMail("WELCOME TO E-GRINGOTTS", """
-//                salam,
-//
-//                New account registered.
-//
-//                Best regards,
-//                goblin
-//                """);
+
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
             stage.setScene(new Scene(root));

@@ -52,6 +52,7 @@ public class MongoDBConnection implements AutoCloseable, Closeable {
         doc.append("balance_G",account.getBalance_G());
         doc.append("goblinStatus",account.getGoblinStatus());
         doc.append("avatar",account.getAvatar());
+        doc.append("pin",account.getPin());
         accountsCollection.insertOne(doc);
     }
 
@@ -142,6 +143,11 @@ public class MongoDBConnection implements AutoCloseable, Closeable {
     public String findEmail(String username){
         Document foundDoc = findByUsername(accountsCollection, username);
         return (String) foundDoc.get("email");
+    }
+
+    public String findPin(String username){
+        Document foundDoc = findByUsername(accountsCollection, username);
+        return (String) foundDoc.get("pin");
     }
 
     //~TRANSACTIONS COLLECTION
