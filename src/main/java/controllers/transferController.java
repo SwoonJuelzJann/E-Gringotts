@@ -27,8 +27,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static com.example.egringotts.MongoDBConnection.accountsCollection;
-import static com.example.egringotts.main.activeUsername;
-import static com.example.egringotts.main.mongo;
+import static com.example.egringotts.main.*;
 
 public class transferController {
     @FXML
@@ -71,7 +70,7 @@ public class transferController {
         }
     }
 
-    public void transfer(ActionEvent event) {
+    public void transfer(ActionEvent event) throws Exception {
 
         String pin = pinField.getText();
 
@@ -132,7 +131,61 @@ public class transferController {
             }
         }
 
-        transaction newtransaction = new transaction(activeUsername,usernameChoice.getValue(),Double.parseDouble(amountField.getText()),currencyChoice.getValue(),categoryChoice.getValue());
+        transaction newtransaction = new transaction(activeUsername
+                ,usernameChoice.getValue()
+                ,Double.parseDouble(amountField.getText())
+                ,currencyChoice.getValue()
+                ,categoryChoice.getValue());
+
+        //send email sender
+        emailSender.sendMail(mongo.findEmail(activeUsername), "E-GRINGOTTS RECEIPT", String.format("""      
+            Date        : %s
+
+            From        : %s
+            To          : %s
+            Amount      : %.2f %s
+            Category    : %s
+
+            Thank you for using E-Gringotts! Your magical transfer has 
+            been successfully completed.
+
+            May your galleons multiply like Fizzing Whizbees!
+
+            Best regards,
+            goblin
+            """
+                , newtransaction.getDate()
+                , newtransaction.getUsername()
+                , newtransaction.getReceiverUsername()
+                , newtransaction.getAmount()
+                , newtransaction.getCurrency()
+                , newtransaction.getCategory()));
+
+        //send email receiver
+        emailSender.sendMail(mongo.findEmail(newtransaction.getReceiverUsername()), "E-GRINGOTTS RECEIPT", String.format("""
+            Date        : %s
+
+            From        : %s
+            To          : %s
+            Amount      : %.2f %s
+            Category    : %s
+
+            Thank you for using E-Gringotts! Your magical transfer has
+            been successfully completed.
+
+            May your galleons multiply like Fizzing Whizbees!
+
+            Best regards,
+            goblin
+            """
+                , newtransaction.getDate()
+                , newtransaction.getUsername()
+                , newtransaction.getReceiverUsername()
+                , newtransaction.getAmount()
+                , newtransaction.getCurrency()
+                , newtransaction.getCategory()));
+
+        //add transaction to db
         mongo.addTransactionDocument(newtransaction);
         transferErrorLabel.setText("TRANSFER SUCCESSFUL");
         transferErrorLabel.setTextFill(Color.GREEN);
@@ -150,7 +203,7 @@ public class transferController {
     }
 
     public boolean validatePin(String pin){
-        String storedPin = mongo.findPin(pin);
+        String storedPin = mongo.findPin(activeUsername);
         if(pin.length() < 6){
             return false;
         }

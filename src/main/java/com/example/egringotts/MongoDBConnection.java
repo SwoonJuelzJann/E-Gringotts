@@ -152,9 +152,9 @@ public class MongoDBConnection implements AutoCloseable, Closeable {
 
     //~TRANSACTIONS COLLECTION
 
-    public String findTransactionID(String username){
+    public Object findTransactionID(String username){
         Document foundDoc = findByUsername(transactionsCollection, username);
-        return (String) foundDoc.get("_id");
+        return foundDoc.get("_id");
     }
 
     public String findSenderUsername(String username){

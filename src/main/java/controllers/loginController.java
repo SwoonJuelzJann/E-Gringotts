@@ -29,20 +29,11 @@ public class loginController{
     @FXML
     private Button loginButton,goblinLoginButton;
     @FXML
-    private AnchorPane loginPane,loginPic, mainPane;
-    @FXML
-    private StackPane parentContainer;
-    @FXML
     private TextField usernameTextfield;
     @FXML
     private PasswordField passwordTextfield;
     @FXML
     private Label warningLabel;
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-    private AnchorPane child;
 
     public void initialize(){
         warningLabel.setVisible(false);
@@ -92,8 +83,6 @@ public class loginController{
     }
 
     public boolean validateLogin(String username, String password){
-        //connection();
-        //super.findByUsername(accountsCollection,text);
         if(mongo.findByUsername(mongo.accountsCollection,username)==null){
             return false;
         }

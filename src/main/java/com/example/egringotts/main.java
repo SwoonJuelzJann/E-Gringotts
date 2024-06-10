@@ -14,7 +14,7 @@ import static com.example.egringotts.MongoDBConnection.accountsCollection;
 
 public class main extends Application {
 
-    public static String activeUsername = "DsPalat123";  //testing
+    public static String activeUsername = "nazafzan";
     public static MongoDBConnection mongo;
     public static GMailer emailSender;
 
@@ -24,8 +24,6 @@ public class main extends Application {
             mongo = new MongoDBConnection();
             MongoDBConnection.connection();
             emailSender = new GMailer();
-
-
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
             stage.setScene(new Scene(root));

@@ -35,7 +35,6 @@ import static javax.mail.Message.RecipientType.TO;
 
 public class GMailer {
 
-    private static final String EMAIL = mongo.findEmail(activeUsername);
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
     private static final String CREDENTIALS_FILE_PATH = "/client_secret_147660039380-al4kqdlv268htgd2kki6a56b1h76asig.apps.googleusercontent.com (1).json";
@@ -74,12 +73,12 @@ public class GMailer {
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
 
-    public void sendMail(String subject, String message) throws Exception {
+    public void sendMail(String fromEmail, String subject, String message) throws Exception {
         Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
         MimeMessage email = new MimeMessage(session);
         email.setFrom(new InternetAddress("egringott.goblin@gmail.com"));
-        email.addRecipient(TO, new InternetAddress(EMAIL));
+        email.addRecipient(TO, new InternetAddress(fromEmail));
         email.setSubject(subject);
         email.setText(message);
 

@@ -29,15 +29,12 @@ import org.bson.conversions.Bson;
 import java.io.IOException;
 import java.util.Objects;
 
-import static com.example.egringotts.MongoDBConnection.accountsCollection;
 import static com.example.egringotts.main.activeUsername;
 import static com.example.egringotts.main.mongo;
 
 public class main_pageController {
     @FXML
-    private Button logoutButton,changePinButton,setPinButton;
-    @FXML
-    private TextField pinField;
+    private Button logoutButton;
     @FXML
     private StackPane stackPane_main;
     @FXML
@@ -48,9 +45,6 @@ public class main_pageController {
     public void initialize() throws IOException {
         nameLabel.setText(mongo.findFirstName(activeUsername));
         avatarImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(mongo.findAvatar(activeUsername))))); //reminder image path kena ada '/' kat depan
-//        avatarImage.setImage(new Image("/Air.png"));
-        pinField.setVisible(false);
-        setPinButton.setVisible(false);
     }
 
     public void logout(ActionEvent event) throws IOException {
@@ -81,36 +75,6 @@ public class main_pageController {
         openPage("/com/example/egringotts/profile.fxml");
 
     }
-
-    public void changePin(ActionEvent event) throws IOException {
-        changePinButton.setVisible(false);
-        setPinButton.setVisible(true);
-        pinField.setVisible(true);
-    }
-
-//    public void setPin(ActionEvent event) throws IOException {
-//
-//        String pin = pinField.getText();
-//
-//        if (pin.isEmpty()){
-//            setPinButton.setText("PLEASE ENTER PIN");
-//            setPinButton.setTextFill(Color.RED);
-//            setPinButton.setStyle("-fx-font-size: 8;"+"-fx-background-color:  #0E5B51;");
-//            return;
-//        }
-//        if (validatePin(pin)) {
-//            setPinButton.setText("PLEASE ENTER VALID PIN");
-//            setPinButton.setTextFill(Color.RED);
-//            setPinButton.setStyle("-fx-font-size: 8;"+"-fx-background-color:  #0E5B51;");
-//            return;
-//        }
-
-        //Document sender = (Document) accountsCollection.find(new Document("pin", activeUsername)).first();     //find document under username
-        //Bson updateSender = new Document("pin", pin);                      //creates updated entry
-        //accountsCollection.updateOne(sender,new Document("$set", updateSender));
-
-//
-//    }
 
     public void openPage(String pageFile) throws IOException {
         AnchorPane anchorPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(pageFile)));

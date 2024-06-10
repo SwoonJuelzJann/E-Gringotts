@@ -62,14 +62,6 @@ public class goblinPageController {
     private String choosenAvatarUrl;
     private ObservableList<transaction> transactionList;
     private ObservableList<account> accountsList;
-    private String newAccEmailMessage = String.format("""
-                Greetings Widard,
-
-                New account registered.
-
-                Best regards,
-                goblin
-                """);
 
     public void initialize() {
         nameLabel.setText(mongo.findFirstName(activeUsername));
@@ -81,7 +73,6 @@ public class goblinPageController {
         choosenAvatarUrl = "/images/avatars/Air.png";
 
         FindIterable<Document> iterable_T = transactionsCollection.find();    //list out all matching values from database
-        FindIterable<Document> iterable_A = accountsCollection.find();
         transactionList = FXCollections.observableArrayList();
         accountsList = FXCollections.observableArrayList();
 
@@ -109,7 +100,6 @@ public class goblinPageController {
     public void loadPieChart(ActionEvent event) {
         loadButton.setText("Reload");
         accountsChart.getData().clear();
-        ObservableList<transaction> updatedTransactionList = FXCollections.observableArrayList();
 
         FindIterable<Document> documents = accountsCollection.find();
         Map<String, Integer> acctypeToAmount = new HashMap<>();
@@ -201,17 +191,23 @@ public class goblinPageController {
 
     public void createAccount(ActionEvent event) throws Exception {
         if (usernameTextfield.getText().isEmpty() || FNameField.getText().isEmpty() || LNameField.getText().isEmpty() || emailField.getText().isEmpty()
-            || numberField.getText().isEmpty() || addressField.getText().isEmpty() || postcodeField.getText().isEmpty() || KDepoField.getText().isEmpty()
-            || SDepoField.getText().isEmpty() || GDepoField.getText().isEmpty()) {
+                || numberField.getText().isEmpty() || addressField.getText().isEmpty() || postcodeField.getText().isEmpty() || KDepoField.getText().isEmpty()
+                || SDepoField.getText().isEmpty() || GDepoField.getText().isEmpty()) {  //check if fields are empty
             errorText.setVisible(true);
             errorText.setTextFill(Color.RED);
             errorText.setText("FILL IN ALL ACCOUNT CREDENTIALS");
             return;
         }
-        if (passwordTextfield.getText().isEmpty() || !verifyPasswordTextfield.getText().equals(passwordTextfield.getText()) || passwordTextfield.getText().length() < 6) {
+        if (accountsCollection.find(new Document("username",usernameTextfield.getText())).first() != null) {  //check if username is taken
             errorText.setVisible(true);
             errorText.setTextFill(Color.RED);
-            errorText.setText("PASSWORD SHOULD BE ATLEAST 6 CHARACTERS");
+            errorText.setText("USERNAME ALREADY EXISTS");
+            return;
+        }
+        if (passwordTextfield.getText().isEmpty() || !verifyPasswordTextfield.getText().equals(passwordTextfield.getText()) || passwordTextfield.getText().length() < 6) {  //check if password >6
+            errorText.setVisible(true);
+            errorText.setTextFill(Color.RED);
+            errorText.setText("PASSWORD IS NOT STRONG ENOUGH");
             return;
         }
 
@@ -233,20 +229,23 @@ public class goblinPageController {
                 emailField.getText(),
                 pin);
 
-        emailSender.sendMail("WELCOME TO E-GRINGOTTS", String.format("""
-                Greetings Wizard,
+        emailSender.sendMail(newAcc.getEmail(),"WELCOME TO E-GRINGOTTS", String.format("""
+            Greetings Wizard,
 
-                You have successfully registered a new account with username %s.
-                
-                Your generated PIN number is %s. Do remember this PIN for your future endavours.
+            You have successfully registered a new account with username %s.
+            
+            Your generated PIN number is %s. Do remember this PIN for your future endavours.
 
-                Best regards,
-                goblin
-                """,newAcc.getUsername(),newAcc.getPin()));
+            Best regards,
+            goblin
+            """,newAcc.getUsername(),newAcc.getPin()));
 
         String password = newAcc.getPassword();
         String storedSaltedHash = security.getSaltedHash(password);
         newAcc.setPassword(storedSaltedHash);
+
+        String pinSaltedHash = security.getSaltedHash(pin);
+        newAcc.setPin(pinSaltedHash);
 
 
         mongo.addAccountDocument(newAcc);
