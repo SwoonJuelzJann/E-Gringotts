@@ -26,6 +26,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 import java.io.IOException;
 import java.util.*;
@@ -39,13 +40,13 @@ import static com.example.egringotts.main.*;
 
 public class goblinPageController {
     @FXML
-    private Label nameLabel,errorText,blockLabel;
+    private Label nameLabel,errorText,blockLabel,searchErrorLabel,addErrorLabel;
     @FXML
     private ImageView avatarImage,chosenAvatar;
     @FXML
     private Button logoutButton,loadButton,createAccountButton;
     @FXML
-    private TextField usernameTextfield,FNameField,LNameField,emailField,numberField,addressField,postcodeField,KDepoField,SDepoField,GDepoField;
+    private TextField usernameTextfield,FNameField,LNameField,emailField,numberField,addressField,postcodeField,KDepoField,SDepoField,GDepoField,depositAmount,searchField;
     @FXML
     private PasswordField passwordTextfield,verifyPasswordTextfield;
     @FXML
@@ -54,6 +55,8 @@ public class goblinPageController {
     private AnchorPane newAccountTab,blockpane;
     @FXML
     private PieChart accountsChart;
+    @FXML
+    private ChoiceBox<String> searchChoice, usernameChoice,currencyChoice;
 
     private boolean isGoblin;
     private String choosenAvatarUrl;
@@ -92,6 +95,13 @@ public class goblinPageController {
             transactionList.add(transaction);                                   //adding them into the list
         }
 
+        //ADD DEPOSIT PAGE
+
+        currencyChoice.setItems(FXCollections.observableArrayList("Knut(K)","Sickle(S)","Galleon(G)"));
+        searchChoice.setItems(FXCollections.observableArrayList("username","firstName","lastName","phoneNo","email"));
+        searchErrorLabel.setVisible(false);
+        addErrorLabel.setVisible(false);
+        depositAmount.setTextFormatter(createNumericTextFormatter());
     }
 
     //~~~~~~~GRINGOTTS INFO TAB~~~~~~~
@@ -129,6 +139,7 @@ public class goblinPageController {
                 )
         );
     }
+
 
     public void logout(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/egringotts/login.fxml")));
@@ -298,5 +309,72 @@ public class goblinPageController {
         }, 0.0, filter);
 
         return textFormatter;
+    }
+
+    public void searchUser(ActionEvent event) {
+        Document filter = new Document(searchChoice.getValue(), searchField.getText());
+        FindIterable<Document> iterable = accountsCollection.find(filter);    //list out all matching values
+        ObservableList<String> usernameList = FXCollections.observableArrayList();
+
+        for (Document doc : iterable) {                             //iterating through docs, getting the username based on the values gotten
+            String username = (String) doc.get("username");         //adding them into the list
+            usernameList.add(username);
+        }
+
+        if (usernameList.isEmpty()){
+            searchErrorLabel.setText("NO USERNAMES FOUND, CHOICES NOT UPDATED");
+            searchErrorLabel.setTextFill(Color.RED);
+            searchErrorLabel.setVisible(true);
+        }
+        else {
+            usernameChoice.setItems(usernameList);       //add all username options into the choice box
+            searchErrorLabel.setText("FOUND USERNAMES, CHOICES UPDATED");
+            searchErrorLabel.setTextFill(Color.GREEN);
+            searchErrorLabel.setVisible(true);
+        }
+    }
+
+    //ADD DEPOSIT METHODS
+    public void addDeposit(ActionEvent event){
+        if (usernameChoice.getValue()==null || currencyChoice.getValue()==null) {    //check if fields are empty
+            addErrorLabel.setText("PLEASE FILL IN ALL REQUIRED FIELDS");
+            addErrorLabel.setTextFill(Color.RED);
+            addErrorLabel.setVisible(true);
+            return;
+        }
+        if (Double.parseDouble(depositAmount.getText())==0) {                     //check if amount transfer >0
+            addErrorLabel.setText("PLEASE FILL IN AMOUNT TO TRANSFER");
+            addErrorLabel.setTextFill(Color.RED);
+            addErrorLabel.setVisible(true);
+            return;
+        }
+
+        if (currencyChoice.getValue().equals("Knut(K)")){                       //check if balance is sufficient & not restricted by usertype
+             double amount = Double.parseDouble(depositAmount.getText());
+             addBalance("balance_K",amount);
+        }
+        else if (currencyChoice.getValue().equals("Sickle(S)")){                       //check if balance is sufficient & not restricted by usertype
+            double amount = Double.parseDouble(depositAmount.getText());
+            addBalance("balance_S",amount);
+        }
+        else if (currencyChoice.getValue().equals("Galleon(G)")){                       //check if balance is sufficient & not restricted by usertype
+            double amount = Double.parseDouble(depositAmount.getText());
+            addBalance("balance_G",amount);
+        }else return;
+
+        String currency = currencyChoice.getValue();
+        double amount = Double.parseDouble(depositAmount.getText());
+        String username = usernameChoice.getValue();
+        String formattedAmount = String.format("%.2f", amount);
+
+        addErrorLabel.setText(formattedAmount+" "+currency+" DEPOSITED TO \""+username+"\"");
+        addErrorLabel.setTextFill(Color.GREEN);
+        addErrorLabel.setVisible(true);
+    }
+
+    public void addBalance(String balance, double total){
+        Document user = (Document) accountsCollection.find(new Document("username",usernameChoice.getValue())).first();     //process repeated for receiver
+        Bson updateReceiver = new Document(balance,mongo.findBalance(balance,usernameChoice.getValue())+total);
+        accountsCollection.updateOne(user,new Document("$set", updateReceiver));
     }
 }
