@@ -74,12 +74,36 @@ public class loginController{
     }
 
     public void goblinLogin(ActionEvent event) throws IOException {
-        AnchorPane goblinPage = FXMLLoader.load(getClass().getResource("/com/example/egringotts/goblinPage.fxml"));
-        Scene scene = new Scene(goblinPage);
-        Stage stage = (Stage) goblinLoginButton.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.show();
+
+        String username = usernameTextfield.getText();
+        String password = passwordTextfield.getText();
+
+        if (!username.isEmpty() && !password.isEmpty() ) {
+            if (validateLogin(username, password)) {
+                if(mongo.findGoblinStatus(username)) {
+                    activeUsername = username;
+
+                    AnchorPane goblinPage = FXMLLoader.load(getClass().getResource("/com/example/egringotts/goblinPage.fxml"));
+                    Scene scene = new Scene(goblinPage);
+                    Stage stage = (Stage) goblinLoginButton.getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.centerOnScreen();
+                    stage.show();
+
+                }else{
+                    warningLabel.setVisible(true);
+                    warningLabel.setText("This account is not a goblin account");
+
+                }
+            } else {
+                warningLabel.setVisible(true);
+                warningLabel.setText("Invalid username or password");
+            }
+        } else {
+            warningLabel.setVisible(true);
+        }
+
+
     }
 
     public boolean validateLogin(String username, String password){

@@ -130,9 +130,9 @@ public class MongoDBConnection implements AutoCloseable, Closeable {
         return (Double) foundDoc.get("balance_G");
     }
 
-    public Integer findGoblinStatus(String username){
+    public Boolean findGoblinStatus(String username){
         Document foundDoc = findByUsername(accountsCollection, username);
-        return (Integer) foundDoc.get("goblinStatus");
+        return (Boolean) foundDoc.get("goblinStatus");
     }
 
     public String findAvatar(String username){

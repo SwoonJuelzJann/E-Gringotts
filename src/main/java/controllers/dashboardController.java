@@ -107,7 +107,6 @@ public class dashboardController {
         maxTransferS.setText(String.format("%.2f", mongo.findMaxTransferS(userType)));
         maxTransferG.setText(String.format("%.2f", mongo.findMaxTransferG(userType)));
         exchangeFee.setText(mongo.findExchangeFee(userType) * 100+"%");
-        System.out.println("dashboard: "+mongo.findExchangeFee(userType));
         remainingTransactions.setText("Perform "+(mongo.findTierUpQuota(userType)-totalTransactions+1)+" more transactions to tier up.");
 
         if (!mongo.findUserType(activeUsername).equals(userType)){          //updates usertype into database
